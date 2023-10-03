@@ -11,7 +11,7 @@
 *
 ********************************************************************************************/
 
-//test commit using git -> Class time
+
 
 #include "raylib.h"
 
@@ -46,7 +46,7 @@ int main(void)
         // Update
         //----------------------------------------------------------------------------------
         scrollingBack -= 1.0f;
-        scrollingMid -= 0.8f;
+        scrollingMid -= 0.7f;
         //scrollingFore -= 1.0f;
 
         // NOTE: Texture is scaled twice its size, so it sould be considered on scrolling
