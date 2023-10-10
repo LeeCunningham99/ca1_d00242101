@@ -21,7 +21,7 @@ int main(void)
 
     InitWindow(screenWidth, screenHeight, "Midnight Motoring"); //Name of Game 
 
-    Texture2D background = LoadTexture("assets/BackgroundImage.png");
+    Texture2D background = LoadTexture("assets/Background.png");
     //Texture2D midground = LoadTexture("assets/tree.png");
 
     float scrollingBack = 0.0f;
