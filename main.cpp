@@ -45,7 +45,7 @@ int main(void)
 
             // Draw background image twice
             // NOTE: Texture is scaled twice its size
-            DrawTextureEx(background, (Vector2){ scrollingBack, 100 }, 0.0f, 2.0f, WHITE);
+            DrawTextureEx(background, (Vector2){ scrollingBack, 0 }, 0.0f, 0.79f, WHITE);
             DrawTextureEx(background, (Vector2){ background.width*2 + scrollingBack, 20 }, 0.0f, 2.0f, WHITE);
 
             // Draw midground image twice
