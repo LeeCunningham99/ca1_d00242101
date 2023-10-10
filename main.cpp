@@ -41,7 +41,7 @@ int main(void)
 
         BeginDrawing();
 
-            ClearBackground(GetColor(0x052c46ff));
+            ClearBackground(GetColor(000000));
 
             // Draw background image twice
             // NOTE: Texture is scaled twice its size
