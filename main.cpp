@@ -10,7 +10,7 @@
 *   Copyright (c) 2019-2023 Ramon Santamaria (@raysan5)
 *
 ********************************************************************************************/
-
+#include <iostream>
 #include "raylib.h"
 
 int main(void)
@@ -22,10 +22,12 @@ int main(void)
     InitWindow(screenWidth, screenHeight, "Midnight Motoring"); //Name of Game 
 
     Texture2D background = LoadTexture("assets/Background.png");
-    //Texture2D midground = LoadTexture("assets/tree.png");
     Texture2D player = LoadTexture("assets/playerss.png");
-    Rectangle source {0.f, 0.f, player.width, (float) player.height / 3.f};
-    Vector2 position {0.f, 0.f};
+    Rectangle source {300.f, 300.f, player.width, (float) player.height / 3.0f};
+    Vector2 position {100.f, 220.0f};
+    int frame = 0;
+    float runningTime{};
+    const float updateTime{1.f/12.f};
 
     float scrollingBack = 0.0f;
     //float scrollingMid = 0.0f;
@@ -41,7 +43,7 @@ int main(void)
 
         if (scrollingBack <= -background.width*2) scrollingBack = 0;
         //if (scrollingMid <= -midground.width*2) scrollingMid = 0;
-
+        float deltaTime = GetFrameTime();
         BeginDrawing();
 
             ClearBackground(BLACK);
@@ -54,7 +56,19 @@ int main(void)
             // Draw midground image twice
             //DrawTextureEx(midground, (Vector2){ scrollingMid, 20 }, 0.0f, 2.0f, WHITE);
             //DrawTextureEx(midground, (Vector2){ midground.width*2 + scrollingMid, 20 }, 0.0f, 2.0f, WHITE);
-
+            runningTime += deltaTime;
+            if (runningTime >= updateTime)
+            {
+                runningTime = 0.f;
+                source.x = (float) frame * source.height;
+                frame++;
+                if (frame > 3)
+                {
+                    frame = 0;
+                }
+            }
+            
+            //source.x = frame * player.height / 3;
            DrawTextureRec(player, source, position, WHITE);
 
             DrawText("SPEED - KM/H", 10, 10, 60, RED);
