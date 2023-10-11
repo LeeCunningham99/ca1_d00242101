@@ -22,12 +22,12 @@ int main(void)
     InitWindow(screenWidth, screenHeight, "Midnight Motoring"); //Name of Game 
 
     Texture2D background = LoadTexture("assets/Background.png");
-    Texture2D player = LoadTexture("assets/playerss.png");
-    Rectangle source {300.f, 300.f, player.width, (float) player.height / 3.0f};
+    Texture2D player = LoadTexture("assets/ssplayer.png");
+    Rectangle source {0.f, 0.f, player.width / 3.0f, (float) player.height};
     Vector2 position {100.f, 220.0f};
     int frame = 0;
     float runningTime{};
-    const float updateTime{1.f/12.f};
+    const float updateTime{1.f/10.f};
 
     float scrollingBack = 0.0f;
     //float scrollingMid = 0.0f;
@@ -60,7 +60,7 @@ int main(void)
             if (runningTime >= updateTime)
             {
                 runningTime = 0.f;
-                source.x = (float) frame * source.height;
+                source.x = (float) frame * source.width;
                 frame++;
                 if (frame > 3)
                 {
@@ -70,6 +70,9 @@ int main(void)
             
             //source.x = frame * player.height / 3;
            DrawTextureRec(player, source, position, WHITE);
+
+           //Movement
+          
 
             DrawText("SPEED - KM/H", 10, 10, 60, RED);
             DrawText("LAP - 1/3", screenWidth - 310, screenHeight - 890, 60, RED);
