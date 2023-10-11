@@ -23,6 +23,9 @@ int main(void)
 
     Texture2D background = LoadTexture("assets/Background.png");
     //Texture2D midground = LoadTexture("assets/tree.png");
+    Texture2D player = LoadTexture("assets/playerss.png");
+    Rectangle source {0.f, 0.f, player.width, (float) player.height / 3.f};
+    Vector2 position {0.f, 0.f};
 
     float scrollingBack = 0.0f;
     //float scrollingMid = 0.0f;
@@ -41,7 +44,7 @@ int main(void)
 
         BeginDrawing();
 
-            ClearBackground(GetColor(000000));
+            ClearBackground(BLACK);
 
             // Draw background image twice
             // NOTE: Texture is scaled twice its size
@@ -51,6 +54,8 @@ int main(void)
             // Draw midground image twice
             //DrawTextureEx(midground, (Vector2){ scrollingMid, 20 }, 0.0f, 2.0f, WHITE);
             //DrawTextureEx(midground, (Vector2){ midground.width*2 + scrollingMid, 20 }, 0.0f, 2.0f, WHITE);
+
+           DrawTextureRec(player, source, position, WHITE);
 
             DrawText("SPEED - KM/H", 10, 10, 60, RED);
             DrawText("LAP - 1/3", screenWidth - 310, screenHeight - 890, 60, RED);
@@ -62,6 +67,7 @@ int main(void)
     //--------------------------------------------------------------------------------------
     UnloadTexture(background);  // Unload background texture
     //UnloadTexture(midground);   // Unload midground texture
+    UnloadTexture(player);
     
     CloseWindow();      
 
