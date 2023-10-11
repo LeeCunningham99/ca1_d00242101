@@ -43,20 +43,21 @@ int main(void)
 
         if (scrollingBack <= -background.width*2) scrollingBack = 0;
         //if (scrollingMid <= -midground.width*2) scrollingMid = 0;
-        float deltaTime = GetFrameTime();
+        float deltaTime = GetFrameTime(); //Time inbetween frame updates
+        //Movement for player. Arrow keys or WASD keys work
         if (IsKeyDown(KEY_UP) || (IsKeyDown(KEY_W)))
         {
             position.y -= 1.5f;
         }
-        if (IsKeyDown(KEY_DOWN)) 
+        if (IsKeyDown(KEY_DOWN) || (IsKeyDown(KEY_S))) 
         {
             position.y += 1.5f;
         }
-        if (IsKeyDown(KEY_LEFT)) 
+        if (IsKeyDown(KEY_LEFT) || (IsKeyDown(KEY_A))) 
         {
             position.x -= 1.5f;
         }
-        if (IsKeyDown(KEY_RIGHT)) 
+        if (IsKeyDown(KEY_RIGHT) || (IsKeyDown(KEY_D))) 
         {
             position.x += 1.5f;
         }
