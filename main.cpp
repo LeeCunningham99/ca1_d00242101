@@ -44,6 +44,22 @@ int main(void)
         if (scrollingBack <= -background.width*2) scrollingBack = 0;
         //if (scrollingMid <= -midground.width*2) scrollingMid = 0;
         float deltaTime = GetFrameTime();
+        if (IsKeyDown(KEY_UP) || (IsKeyDown(KEY_W)))
+        {
+            position.y -= 1.5f;
+        }
+        if (IsKeyDown(KEY_DOWN)) 
+        {
+            position.y += 1.5f;
+        }
+        if (IsKeyDown(KEY_LEFT)) 
+        {
+            position.x -= 1.5f;
+        }
+        if (IsKeyDown(KEY_RIGHT)) 
+        {
+            position.x += 1.5f;
+        }
         BeginDrawing();
 
             ClearBackground(BLACK);
@@ -67,13 +83,9 @@ int main(void)
                     frame = 0;
                 }
             }
-            
-            //source.x = frame * player.height / 3;
+
            DrawTextureRec(player, source, position, WHITE);
-
-           //Movement
-          
-
+           
             DrawText("SPEED - KM/H", 10, 10, 60, RED);
             DrawText("LAP - 1/3", screenWidth - 310, screenHeight - 890, 60, RED);
 
@@ -84,9 +96,8 @@ int main(void)
     //--------------------------------------------------------------------------------------
     UnloadTexture(background);  // Unload background texture
     //UnloadTexture(midground);   // Unload midground texture
-    UnloadTexture(player);
+    UnloadTexture(player); // Unload player's spritesheet texture
     
     CloseWindow();      
-
     return 0;
 }
