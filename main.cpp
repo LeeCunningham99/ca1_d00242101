@@ -12,6 +12,46 @@
 ********************************************************************************************/
 #include <iostream>
 #include "raylib.h"
+//////////////////TRY TO GET PLAYER & ANIMATION STRUCTS WORKING///////////////////////
+/*
+struct Player 
+{
+    Vector2 position;
+    //float speed;
+    Texture2D texture;
+    Rectangle sourceRec;
+    float width;
+    float height;
+    int frame;
+    float runningTime;
+    const float updateTime;
+};
+*/
+
+/*
+struct Player Input (struct Player player)
+{
+    Vector2 position {100.f, 220.0f}; // Player start position
+        // Keybinds
+    if (IsKeyDown(KEY_UP) || (IsKeyDown(KEY_W)))
+        {
+            position.y -= 1.0f;
+        }
+        if (IsKeyDown(KEY_DOWN) || (IsKeyDown(KEY_S))) 
+        {
+            position.y += 1.0f;
+        }
+        if (IsKeyDown(KEY_LEFT) || (IsKeyDown(KEY_A))) 
+        {
+            position.x -= 0.2f;
+        }
+        if (IsKeyDown(KEY_RIGHT) || (IsKeyDown(KEY_D))) 
+        {
+            position.x += 1.5f;
+        }
+        return player;
+}
+*/
 
 int main(void)
 {
@@ -20,6 +60,18 @@ int main(void)
     const int screenHeight = 900;
 
     InitWindow(screenWidth, screenHeight, "Midnight Motoring"); //Name of Game 
+
+/*
+struct Player player;
+    player.texture = LoadTexture("assets/ssplayer.png");
+    player.sourceRec = {0.f, 0.f, player.width / 3.0f, (float) player.height};
+    player.position = {100.f, 220.0f};
+    player.frame = 0;
+    player.runningTime = 0.0f;
+    player.updateTime = 1.0f/10.0f;
+
+*/
+
 
     Texture2D background = LoadTexture("assets/Background.png");
     Texture2D player = LoadTexture("assets/ssplayer.png");
