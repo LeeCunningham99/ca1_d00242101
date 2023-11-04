@@ -60,6 +60,13 @@ int main(void)
     const int screenHeight = 900;
 
     InitWindow(screenWidth, screenHeight, "Midnight Motoring"); //Name of Game 
+    InitAudioDevice(); //Initializes The Audio Devices
+    Music music = LoadMusicStream("assets/Theme.mp3");
+    music.looping = true;
+    float pitch = 1.0f;
+    PlayMusicStream(music);
+    float timePlayed = 0.0f;
+    bool pause = false;
 
 /*
 struct Player player;
@@ -89,6 +96,7 @@ struct Player player;
     //Main game loop
     while (!WindowShouldClose())
     {
+        UpdateMusicStream(music);
         //Update
         scrollingBack -= 1.0f;
         //scrollingMid -= 0.7f;
@@ -143,6 +151,10 @@ struct Player player;
             DrawText("LAP - 1/3", screenWidth - 310, screenHeight - 890, 60, RED);
 
         EndDrawing();
+
+/////////////////////////////Enemy AI////////////////////////////////////////////
+
+
     }
 
     // De-Initialization
@@ -150,6 +162,7 @@ struct Player player;
     UnloadTexture(background);  // Unload background texture
     //UnloadTexture(midground);   // Unload midground texture
     UnloadTexture(player); // Unload player's spritesheet texture
+    UnloadMusicStream(music);
     
     CloseWindow();      
     return 0;
