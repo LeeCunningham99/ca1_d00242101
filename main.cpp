@@ -53,7 +53,7 @@ struct Player Input (struct Player player)
         return player;
 }
 */
-
+using namespace std;
 int main(void)
 {
     // Initialization
@@ -61,7 +61,16 @@ int main(void)
     const int screenHeight = 900;
 
     InitWindow(screenWidth, screenHeight, "Midnight Motoring"); //Name of Game 
+    //Player
     Player player; //Creating A Player using Player Class.
+    player.playerImage = LoadTexture("assets/ssplayer.png"); //Player Image
+    //Source Of Spritesheet
+    Rectangle source {0.f, 0.f, player.width / 3.0f, (float) player.height};
+    Vector2 position {100.f, 220.0f};
+    int frame = 0;
+    float runningTime{};
+    const float updateTime{1.f/10.f};
+
     //Audio
     InitAudioDevice(); //Initializes The Audio Devices
     Music music = LoadMusicStream("assets/Theme.mp3");
@@ -83,15 +92,8 @@ struct Player player;
     player.updateTime = 1.0f/10.0f;
 
 */
-
+    //Background
     Texture2D background = LoadTexture("assets/Background.png"); //Background Image
-    Texture2D player = LoadTexture("assets/ssplayer.png"); //Player Image
-    Rectangle source {0.f, 0.f, player.width / 3.0f, (float) player.height};
-    Vector2 position {100.f, 220.0f};
-    int frame = 0;
-    float runningTime{};
-    const float updateTime{1.f/10.f};
-
     float scrollingBack = 0.0f;
     //float scrollingMid = 0.0f;
 
@@ -100,8 +102,6 @@ struct Player player;
     //Main game loop
     while (!WindowShouldClose())
     {
-        //Player.movement();
-
         UpdateMusicStream(music);
         //Update
         scrollingBack -= 1.0f;
@@ -154,9 +154,8 @@ struct Player player;
                     frame = 0;
                 }
             }
-            
 
-           DrawTextureRec(player, source, position, WHITE);
+           DrawTextureRec(player.playerImage, source, position, WHITE);
           //Text 
             DrawText("SPEED - KM/H", 10, 10, 60, RED);
             DrawText("LAP - 1/3", screenWidth - 310, screenHeight - 890, 60, RED);
@@ -164,15 +163,14 @@ struct Player player;
         EndDrawing();
 
 /////////////////////////////Enemy AI////////////////////////////////////////////
-
-
     }
 
     // De-Initialization
     //--------------------------------------------------------------------------------------
     UnloadTexture(background);  // Unload background texture
     //UnloadTexture(midground);   // Unload midground texture
-    UnloadTexture(player); // Unload player's spritesheet texture
+    //UnloadTexture(playerImage); // Unload player's spritesheet texture
+    player.unloadTexture();
     UnloadMusicStream(music);
     
     CloseWindow();      

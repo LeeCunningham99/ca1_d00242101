@@ -45,3 +45,8 @@ void Player::animation()
             }
 }
 */
+
+void Player::unloadTexture()
+{
+    UnloadTexture(playerImage); // Unload player's spritesheet texture
+}

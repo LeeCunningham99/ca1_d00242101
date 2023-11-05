@@ -6,9 +6,12 @@ class Player
 public:
 
     Vector2 position;
-    Texture2D Player;
-    Rectangle Source;
+    Texture2D playerImage;
+    Rectangle source;
+    float width;
+    float height;
 
     void movement();
     void animation();
+    void unloadTexture();
 };
