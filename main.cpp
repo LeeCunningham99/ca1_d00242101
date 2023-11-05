@@ -54,7 +54,7 @@ struct Player Input (struct Player player)
 }
 */
 using namespace std;
-int main(void)
+int main()
 {
     // Initialization
     const int screenWidth = 1600;
@@ -64,9 +64,9 @@ int main(void)
     //Player
     Player player; //Creating A Player using Player Class.
     player.playerImage = LoadTexture("assets/ssplayer.png"); //Player Image
+    Vector2 playerPosition {100.f, 220.0f};
     //Source Of Spritesheet
     Rectangle source {0.f, 0.f, player.width / 3.0f, (float) player.height};
-    Vector2 position {100.f, 220.0f};
     int frame = 0;
     float runningTime{};
     const float updateTime{1.f/10.f};
@@ -80,9 +80,7 @@ int main(void)
     PlayMusicStream(music);
     //float timePlayed = 0.0f;
     //bool pause = false;
-
     player.movement();
-
 /*
 struct Player player;
     player.texture = LoadTexture("assets/ssplayer.png");
@@ -97,9 +95,7 @@ struct Player player;
     Texture2D background = LoadTexture("assets/Background.png"); //Background Image
     float scrollingBack = 0.0f;
     //float scrollingMid = 0.0f;
-
     SetTargetFPS(60);           
-
     //Main game loop
     while (!WindowShouldClose())
     {
@@ -107,7 +103,6 @@ struct Player player;
         //Update
         scrollingBack -= 1.0f;
         //scrollingMid -= 0.7f;
-
         if (scrollingBack <= -background.width*2) scrollingBack = 0;
         //if (scrollingMid <= -midground.width*2) scrollingMid = 0;
         float deltaTime = GetFrameTime(); //Time inbetween frame updates
@@ -154,7 +149,7 @@ struct Player player;
                 }
             }
             //Player Texture Drawn
-           DrawTextureRec(player.playerImage, source, position, WHITE);
+           DrawTextureRec(player.playerImage, source, playerPosition, WHITE);
           //Text 
             DrawText("SPEED - KM/H", 10, 10, 60, RED);
             DrawText("LAP - 1/3", screenWidth - 310, screenHeight - 890, 60, RED);

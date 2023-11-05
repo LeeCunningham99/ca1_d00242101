@@ -22,19 +22,19 @@ void Player::movement()
 {
 if (IsKeyDown(KEY_UP) || (IsKeyDown(KEY_W)))
         {
-            position.y -= 1.0f;
+            playerPosition.y -= 1.0f;
         }
         if (IsKeyDown(KEY_DOWN) || (IsKeyDown(KEY_S))) 
         {
-            position.y += 1.0f;
+            playerPosition.y += 1.0f;
         }
         if (IsKeyDown(KEY_LEFT) || (IsKeyDown(KEY_A))) 
         {
-            position.x -= 0.2f;
+            playerPosition.x -= 0.2f;
         }
         if (IsKeyDown(KEY_RIGHT) || (IsKeyDown(KEY_D))) 
         {
-            position.x += 1.5f;
+            playerPosition.x += 1.5f;
         }
 }
 /*

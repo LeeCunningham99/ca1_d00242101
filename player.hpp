@@ -4,7 +4,7 @@ class Player
 {
 
 public:
-    Vector2 position;
+    Vector2 playerPosition;
     Texture2D playerImage;
     Rectangle source;
     float width;
