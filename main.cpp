@@ -12,6 +12,7 @@
 ********************************************************************************************/
 #include <iostream>
 #include "raylib.h"
+#include "player.hpp"
 //////////////////TRY TO GET PLAYER & ANIMATION STRUCTS WORKING///////////////////////
 /*
 struct Player 
@@ -60,6 +61,7 @@ int main(void)
     const int screenHeight = 900;
 
     InitWindow(screenWidth, screenHeight, "Midnight Motoring"); //Name of Game 
+    Player player; //Creating A Player using Player Class.
     //Audio
     InitAudioDevice(); //Initializes The Audio Devices
     Music music = LoadMusicStream("assets/Theme.mp3");
@@ -68,6 +70,8 @@ int main(void)
     PlayMusicStream(music);
     float timePlayed = 0.0f;
     bool pause = false;
+
+    player.movement();
 
 /*
 struct Player player;
@@ -79,7 +83,6 @@ struct Player player;
     player.updateTime = 1.0f/10.0f;
 
 */
-
 
     Texture2D background = LoadTexture("assets/Background.png"); //Background Image
     Texture2D player = LoadTexture("assets/ssplayer.png"); //Player Image
@@ -97,6 +100,8 @@ struct Player player;
     //Main game loop
     while (!WindowShouldClose())
     {
+        //Player.movement();
+
         UpdateMusicStream(music);
         //Update
         scrollingBack -= 1.0f;
@@ -137,7 +142,7 @@ struct Player player;
             //DrawTextureEx(midground, (Vector2){ scrollingMid, 20 }, 0.0f, 2.0f, WHITE);
             //DrawTextureEx(midground, (Vector2){ midground.width*2 + scrollingMid, 20 }, 0.0f, 2.0f, WHITE);
             
-            
+          //Animation
             runningTime += deltaTime;
             if (runningTime >= updateTime)
             {
@@ -152,7 +157,7 @@ struct Player player;
             
 
            DrawTextureRec(player, source, position, WHITE);
-           
+          //Text 
             DrawText("SPEED - KM/H", 10, 10, 60, RED);
             DrawText("LAP - 1/3", screenWidth - 310, screenHeight - 890, 60, RED);
 
