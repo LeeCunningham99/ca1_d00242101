@@ -60,6 +60,7 @@ int main(void)
     const int screenHeight = 900;
 
     InitWindow(screenWidth, screenHeight, "Midnight Motoring"); //Name of Game 
+    //Audio
     InitAudioDevice(); //Initializes The Audio Devices
     Music music = LoadMusicStream("assets/Theme.mp3");
     music.looping = true;
@@ -80,8 +81,8 @@ struct Player player;
 */
 
 
-    Texture2D background = LoadTexture("assets/Background.png");
-    Texture2D player = LoadTexture("assets/ssplayer.png");
+    Texture2D background = LoadTexture("assets/Background.png"); //Background Image
+    Texture2D player = LoadTexture("assets/ssplayer.png"); //Player Image
     Rectangle source {0.f, 0.f, player.width / 3.0f, (float) player.height};
     Vector2 position {100.f, 220.0f};
     int frame = 0;
@@ -105,6 +106,7 @@ struct Player player;
         //if (scrollingMid <= -midground.width*2) scrollingMid = 0;
         float deltaTime = GetFrameTime(); //Time inbetween frame updates
         //Movement for player. Arrow keys or WASD keys work
+        /*
         if (IsKeyDown(KEY_UP) || (IsKeyDown(KEY_W)))
         {
             position.y -= 1.0f;
@@ -121,6 +123,7 @@ struct Player player;
         {
             position.x += 1.5f;
         }
+        */
         BeginDrawing();
 
             ClearBackground(BLACK);
@@ -133,6 +136,8 @@ struct Player player;
             // Draw midground image twice
             //DrawTextureEx(midground, (Vector2){ scrollingMid, 20 }, 0.0f, 2.0f, WHITE);
             //DrawTextureEx(midground, (Vector2){ midground.width*2 + scrollingMid, 20 }, 0.0f, 2.0f, WHITE);
+            
+            
             runningTime += deltaTime;
             if (runningTime >= updateTime)
             {
@@ -144,6 +149,7 @@ struct Player player;
                     frame = 0;
                 }
             }
+            
 
            DrawTextureRec(player, source, position, WHITE);
            
