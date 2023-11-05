@@ -66,7 +66,7 @@ int main()
     player.playerImage = LoadTexture("assets/ssplayer.png"); //Player Image
     Vector2 playerPosition {100.f, 220.0f};
     //Source Of Spritesheet
-    Rectangle source {0.f, 0.f, player.width / 3.0f, (float) player.height};
+    Rectangle source {0.f, 0.f, player.width / 3.0f, (float) player.height}; //Source of Player's Rectangle
     int frame = 0;
     float runningTime{};
     const float updateTime{1.f/10.f};
