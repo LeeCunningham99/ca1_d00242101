@@ -70,15 +70,16 @@ int main(void)
     int frame = 0;
     float runningTime{};
     const float updateTime{1.f/10.f};
+    //player.playerSetup();
 
     //Audio
     InitAudioDevice(); //Initializes The Audio Devices
     Music music = LoadMusicStream("assets/Theme.mp3");
     music.looping = true;
-    float pitch = 1.0f;
+    //float pitch = 1.0f;
     PlayMusicStream(music);
-    float timePlayed = 0.0f;
-    bool pause = false;
+    //float timePlayed = 0.0f;
+    //bool pause = false;
 
     player.movement();
 
@@ -130,9 +131,7 @@ struct Player player;
         }
         */
         BeginDrawing();
-
             ClearBackground(BLACK);
-
             // Draw background image twice
             // NOTE: Texture is scaled twice its size
             DrawTextureEx(background, (Vector2){ scrollingBack, 0 }, 0.0f, 0.79f, WHITE);
@@ -142,7 +141,7 @@ struct Player player;
             //DrawTextureEx(midground, (Vector2){ scrollingMid, 20 }, 0.0f, 2.0f, WHITE);
             //DrawTextureEx(midground, (Vector2){ midground.width*2 + scrollingMid, 20 }, 0.0f, 2.0f, WHITE);
             
-          //Animation
+          //Player Animation
             runningTime += deltaTime;
             if (runningTime >= updateTime)
             {
@@ -154,7 +153,7 @@ struct Player player;
                     frame = 0;
                 }
             }
-
+            //Player Texture Drawn
            DrawTextureRec(player.playerImage, source, position, WHITE);
           //Text 
             DrawText("SPEED - KM/H", 10, 10, 60, RED);

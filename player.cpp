@@ -7,6 +7,16 @@ const float updateTime{1.f/10.f};
 int frame = 0;
 Rectangle source {0.f, 0.f, player.width / 3.0f, (float) player.height};
 */
+/*
+void playerSetup()
+{
+    //Rectangle source {0.f, 0.f, player.width / 3.0f, (float) player.height};
+    Vector2 position {100.f, 220.0f};
+    int frame = 0;
+    float runningTime{};
+    const float updateTime{1.f/10.f};
+}
+*/
 
 void Player::movement()
 {
