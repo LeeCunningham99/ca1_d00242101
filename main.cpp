@@ -10,8 +10,8 @@
 *   Copyright (c) 2019-2023 Ramon Santamaria (@raysan5)
 *
 ********************************************************************************************/
-#include <iostream>
 #include "raylib.h"
+#include <iostream>
 #include "player.hpp"
 #include "menu.hpp"
 //////////////////TRY TO GET PLAYER & ANIMATION STRUCTS WORKING///////////////////////
