@@ -60,19 +60,18 @@ int main()
     // Initialization
     const int screenWidth = 1600;
     const int screenHeight = 900;
-
     InitWindow(screenWidth, screenHeight, "Midnight Motoring"); //Name of Game 
-    //Player
+
+    //Player Setup----------------------------------------------------------------------------------------
     Player player; //Creating A Player using Player Class.
+    player.width = 1100;
+    player.height = 250;
     player.playerImage = LoadTexture("./assets/ssplayer.png"); //Player Image
     player.playerPosition = {100.f, 220.0f};
-    player.source = {0.f, 0.f, player.width / 3.0f, (float) player.height}; //Source of Player's Rectangle
-    //int frame = 0;
-    //float runningTime{};
-    //const float updateTime{1.f/10.f};
-    //player.playerSetup();
+    player.source = {0.f, 0.f, player.width / 3.0f, player.height}; //Source of Player's Rectangle
+
     //Player Animation---------------------------------------------------------------------------------------
-    player.deltaTime = GetFrameTime();
+    //player.deltaTime = GetFrameTime();
     player.frame = 0;
     player.runningTime={};
     player.updateTime={1.f/10.f};
@@ -91,7 +90,7 @@ int main()
     PlayMusicStream(music);
     //float timePlayed = 0.0f;
     //bool pause = false;
-    player.movement();
+    
 /*
 struct Player player;
     player.texture = LoadTexture("assets/ssplayer.png");
@@ -111,7 +110,8 @@ struct Player player;
     //while (!WindowShouldClose()) //Exits Application when esc is pressed
     while (!menu.exitWindow) //Displays an Exit option when esc is pressed
     {
-        
+        player.deltaTime = GetFrameTime();
+        player.movement();
         UpdateMusicStream(music);
         //Update
         scrollingBack -= 1.0f;
