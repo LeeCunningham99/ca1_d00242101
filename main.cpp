@@ -64,14 +64,18 @@ int main()
     InitWindow(screenWidth, screenHeight, "Midnight Motoring"); //Name of Game 
     //Player
     Player player; //Creating A Player using Player Class.
-    player.playerImage = LoadTexture("assets/ssplayer.png"); //Player Image
+    player.playerImage = LoadTexture("/assets/ssplayer.png"); //Player Image
     Vector2 playerPosition {100.f, 220.0f};
-    //Source Of Spritesheet
-    Rectangle source {0.f, 0.f, player.width / 3.0f, (float) player.height}; //Source of Player's Rectangle
-    int frame = 0;
-    float runningTime{};
-    const float updateTime{1.f/10.f};
+    player.source = {0.f, 0.f, player.width / 3.0f, (float) player.height}; //Source of Player's Rectangle
+    //int frame = 0;
+    //float runningTime{};
+    //const float updateTime{1.f/10.f};
     //player.playerSetup();
+    //Player Animation---------------------------------------------------------------------------------------
+    player.deltaTime = GetFrameTime();
+    player.frame = 0;
+    player.runningTime={};
+    player.updateTime={1.f/10.f};
 
     //Menu Setup
     Menu menu;
@@ -114,7 +118,7 @@ struct Player player;
         //scrollingMid -= 0.7f;
         if (scrollingBack <= -background.width*2) scrollingBack = 0;
         //if (scrollingMid <= -midground.width*2) scrollingMid = 0;
-        float deltaTime = GetFrameTime(); //Time inbetween frame updates
+        //float deltaTime = GetFrameTime(); //Time inbetween frame updates
         //Movement for player. Arrow keys or WASD keys work
         /*
         if (IsKeyDown(KEY_UP) || (IsKeyDown(KEY_W)))
@@ -148,22 +152,25 @@ struct Player player;
             //DrawTextureEx(midground, (Vector2){ midground.width*2 + scrollingMid, 20 }, 0.0f, 2.0f, WHITE);
             
           //Player Animation
+          player.animation();
+          /*
             runningTime += deltaTime;
             if (runningTime >= updateTime)
             {
                 runningTime = 0.f;
-                source.x = (float) frame * source.width;
+                player.source.x = (float) frame * player.source.width;
                 frame++;
                 if (frame > 3)
                 {
                     frame = 0;
                 }
             }
-            //Player Texture Drawn
-           DrawTextureRec(player.playerImage, source, playerPosition, WHITE);
-          //Text 
+            */
+        //Player Texture Drawn--------------------------------------------------------------------------------------------------------------------------
+            DrawTextureRec(player.playerImage, player.source, playerPosition, WHITE);
+        //Text 
             DrawText("SPEED - KM/H", 10, 10, 60, RED);
-            DrawText("LAP - 1/3", screenWidth - 310, screenHeight - 890, 60, RED);
+            DrawText("Points: ", screenWidth - 310, screenHeight - 890, 60, RED);
 
 //menu--------------------------------------------------------------------------------------------------------------------------------------------
         menu.menuExit();

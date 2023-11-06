@@ -10,8 +10,14 @@ public:
     float width;
     float height;
 
+    int frame;
+    float runningTime;
+    //const float updateTime;
+    float updateTime;
+    float deltaTime;
+
     //void playerSetup();
     void movement();
-    //void animation();
+    void animation();
     void unloadTexture();
 };

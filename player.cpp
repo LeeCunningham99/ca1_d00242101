@@ -37,11 +37,9 @@ if (IsKeyDown(KEY_UP) || (IsKeyDown(KEY_W)))
             playerPosition.x += 1.5f;
         }
 }
-/*
+
 void Player::animation()
 {
-   
-
     runningTime += deltaTime;
             if (runningTime >= updateTime)
             {
@@ -54,7 +52,6 @@ void Player::animation()
                 }
             }
 }
-*/
 
 void Player::unloadTexture()
 {
