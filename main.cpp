@@ -13,6 +13,7 @@
 #include <iostream>
 #include "raylib.h"
 #include "player.hpp"
+#include "menu.hpp"
 //////////////////TRY TO GET PLAYER & ANIMATION STRUCTS WORKING///////////////////////
 /*
 struct Player 
@@ -72,6 +73,12 @@ int main()
     const float updateTime{1.f/10.f};
     //player.playerSetup();
 
+    //Menu Setup
+    Menu menu;
+    menu.exitWindowRequested = false;
+    menu.exitWindow = false;
+    menu.menuScreenWidth = screenWidth;
+
     //Audio
     InitAudioDevice(); //Initializes The Audio Devices
     Music music = LoadMusicStream("assets/Theme.mp3");
@@ -97,8 +104,10 @@ struct Player player;
     //float scrollingMid = 0.0f;
     SetTargetFPS(60);           
     //Main game loop
-    while (!WindowShouldClose())
+    //while (!WindowShouldClose()) //Exits Application when esc is pressed
+    while (!menu.exitWindow) //Displays an Exit option when esc is pressed
     {
+        
         UpdateMusicStream(music);
         //Update
         scrollingBack -= 1.0f;
@@ -126,7 +135,9 @@ struct Player player;
         }
         */
         BeginDrawing();
-            ClearBackground(BLACK);
+        ClearBackground(BLACK);
+
+        //Background--------------------------------------------------------------------------------------------------------------------------------------
             // Draw background image twice
             // NOTE: Texture is scaled twice its size
             DrawTextureEx(background, (Vector2){ scrollingBack, 0 }, 0.0f, 0.79f, WHITE);
@@ -154,9 +165,10 @@ struct Player player;
             DrawText("SPEED - KM/H", 10, 10, 60, RED);
             DrawText("LAP - 1/3", screenWidth - 310, screenHeight - 890, 60, RED);
 
+//menu--------------------------------------------------------------------------------------------------------------------------------------------
+        menu.menuExit();
+        menu.gameClose();
         EndDrawing();
-
-/////////////////////////////Enemy AI////////////////////////////////////////////
     }
 
     // De-Initialization

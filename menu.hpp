@@ -4,8 +4,9 @@ class Menu
 {
     public:
 
-    bool exitApplication;
+    bool exitWindowRequested;
     bool exitWindow;
+    int menuScreenWidth;
 
     void menuExit();
     void gameClose();
