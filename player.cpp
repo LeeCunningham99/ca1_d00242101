@@ -34,6 +34,7 @@ if (IsKeyDown(KEY_UP) || (IsKeyDown(KEY_W)))
         }
         if (IsKeyDown(KEY_RIGHT) || (IsKeyDown(KEY_D))) 
         {
+            //DrawTextureRec(playerImage, Rectangle{0,0,500, 200},Vector2{playerPosition},RAYWHITE);
             playerPosition.x += 1.5f;
         }
 }
@@ -56,4 +57,9 @@ void Player::animation()
 void Player::unloadTexture()
 {
     UnloadTexture(playerImage); // Unload player's spritesheet texture
+}
+
+void Player::drawPlayer()
+{
+    DrawTextureRec(playerImage, source, playerPosition, WHITE);
 }

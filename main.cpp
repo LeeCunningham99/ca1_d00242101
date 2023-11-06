@@ -64,8 +64,8 @@ int main()
     InitWindow(screenWidth, screenHeight, "Midnight Motoring"); //Name of Game 
     //Player
     Player player; //Creating A Player using Player Class.
-    player.playerImage = LoadTexture("/assets/ssplayer.png"); //Player Image
-    Vector2 playerPosition {100.f, 220.0f};
+    player.playerImage = LoadTexture("./assets/ssplayer.png"); //Player Image
+    player.playerPosition = {100.f, 220.0f};
     player.source = {0.f, 0.f, player.width / 3.0f, (float) player.height}; //Source of Player's Rectangle
     //int frame = 0;
     //float runningTime{};
@@ -151,7 +151,7 @@ struct Player player;
             //DrawTextureEx(midground, (Vector2){ scrollingMid, 20 }, 0.0f, 2.0f, WHITE);
             //DrawTextureEx(midground, (Vector2){ midground.width*2 + scrollingMid, 20 }, 0.0f, 2.0f, WHITE);
             
-          //Player Animation
+          //Player Animation----------------------------------------------------------------------------------------------------------------------------
           player.animation();
           /*
             runningTime += deltaTime;
@@ -167,7 +167,8 @@ struct Player player;
             }
             */
         //Player Texture Drawn--------------------------------------------------------------------------------------------------------------------------
-            DrawTextureRec(player.playerImage, player.source, playerPosition, WHITE);
+        //DrawTextureRec(player.playerImage, player.source, playerPosition, WHITE);
+        player.drawPlayer();
         //Text 
             DrawText("SPEED - KM/H", 10, 10, 60, RED);
             DrawText("Points: ", screenWidth - 310, screenHeight - 890, 60, RED);
@@ -177,7 +178,6 @@ struct Player player;
         menu.gameClose();
         EndDrawing();
     }
-
     // De-Initialization
     //--------------------------------------------------------------------------------------
     UnloadTexture(background);  // Unload background texture

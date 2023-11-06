@@ -20,4 +20,5 @@ public:
     void movement();
     void animation();
     void unloadTexture();
+    void drawPlayer();
 };
