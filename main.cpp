@@ -14,6 +14,7 @@
 #include <iostream>
 #include "player.hpp"
 #include "menu.hpp"
+#include "titleScreen.hpp"
 
 using namespace std;
 int main()
@@ -25,6 +26,9 @@ int main()
 
     //TitleScreen Setup-----------------------------------------------------------------------------------
     TitleScreen titleScreen;
+    titleScreen.framesCounter = 0;
+    titleScreen.screenHeight = 2400;
+    titleScreen.screenWidth = 1800;
 
     //Player Setup----------------------------------------------------------------------------------------
     Player player; //Creating A Player using Player Class.
@@ -63,6 +67,8 @@ int main()
 
     while (!menu.exitWindow) //Displays an Exit option when esc is pressed
     {
+        titleScreen.setupTitleScreen(); //Sets up Title Screen
+
         player.deltaTime = GetFrameTime();
         player.movement();
         UpdateMusicStream(music);
@@ -91,6 +97,8 @@ int main()
 //menu--------------------------------------------------------------------------------------------------------------------------------------------
         menu.menuExit();
         menu.gameClose();
+
+        titleScreen.drawTitleScreen();//Draws Titlescreen
 
         EndDrawing();
     }
