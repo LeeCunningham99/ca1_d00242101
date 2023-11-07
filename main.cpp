@@ -29,7 +29,7 @@ int main()
     titleScreen.framesCounter = 0;
     titleScreen.screenHeight = 2400;
     titleScreen.screenWidth = 1800;
-    titleScreen.titleImage = LoadTexture("./assets/ssplayer.png"); //Titlescreen Image
+    titleScreen.titleImage = LoadTexture("./assets/titlescreen.png"); //Titlescreen Image
     titleScreen.titlePosition = {0.f, 0.f};
     titleScreen.titleSource = {0.f, 0.f, screenWidth, screenHeight};
 
