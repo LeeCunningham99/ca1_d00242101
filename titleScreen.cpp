@@ -61,7 +61,8 @@ void TitleScreen::drawTitleScreen()
                 case TITLE:
                 {
                     // TODO: Draw TITLE screen here!
-                    DrawRectangle(0, 0, screenWidth, screenHeight, GREEN);
+                    //DrawRectangle(0, 0, screenWidth, screenHeight, GREEN);
+                    DrawTextureRec(titleImage, titleSource, titlePosition, WHITE);
                     DrawText("TITLE SCREEN", 20, 20, 40, DARKGREEN);
                     DrawText("PRESS ENTER or TAP to JUMP to GAMEPLAY SCREEN", 120, 220, 20, DARKGREEN);
 
@@ -87,4 +88,9 @@ void TitleScreen::drawTitleScreen()
                 */
                 default: break;
             }
+}
+
+void TitleScreen::unloadTitleTexture()
+{
+    UnloadTexture(titleImage); // Unload titlescreen texture
 }

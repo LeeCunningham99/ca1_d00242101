@@ -29,6 +29,9 @@ int main()
     titleScreen.framesCounter = 0;
     titleScreen.screenHeight = 2400;
     titleScreen.screenWidth = 1800;
+    titleScreen.titleImage = LoadTexture("./assets/ssplayer.png"); //Titlescreen Image
+    titleScreen.titlePosition = {0.f, 0.f};
+    titleScreen.titleSource = {0.f, 0.f, screenWidth, screenHeight};
 
     //Player Setup----------------------------------------------------------------------------------------
     Player player; //Creating A Player using Player Class.
@@ -107,6 +110,7 @@ int main()
     UnloadTexture(background);  // Unload background texture
     player.unloadTexture();
     UnloadMusicStream(music);
+    titleScreen.unloadTitleTexture();
     
     CloseWindow();      
     return 0;
