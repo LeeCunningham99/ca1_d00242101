@@ -23,6 +23,9 @@ int main()
     const int screenHeight = 900;
     InitWindow(screenWidth, screenHeight, "Midnight Motoring"); //Name of Game 
 
+    //TitleScreen Setup-----------------------------------------------------------------------------------
+    TitleScreen titleScreen;
+
     //Player Setup----------------------------------------------------------------------------------------
     Player player; //Creating A Player using Player Class.
     player.width = 1100;
