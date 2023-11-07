@@ -21,15 +21,17 @@ void TitleScreen::setupTitleScreen()
                 currentScreen = GAMEPLAY;
             }
         } break;
-
+        
         case GAMEPLAY:
         {
+            /*
             if (IsKeyPressed(KEY_TAB))
             {
                 currentScreen = ENDING;
             }
+            */
         } break;
-
+        /*
         case ENDING:
         {
             if (IsKeyPressed(KEY_ENTER))
@@ -37,6 +39,7 @@ void TitleScreen::setupTitleScreen()
                 currentScreen = TITLE;
             }
         }
+        */
     }
 }
 
@@ -59,14 +62,16 @@ void TitleScreen::drawTitleScreen()
                     DrawText("PRESS ENTER or TAP to JUMP to GAMEPLAY SCREEN", 120, 220, 20, DARKGREEN);
 
                 } break;
+
                 case GAMEPLAY:
                 {
                     // TODO: Draw GAMEPLAY screen here!
-                    DrawRectangle(0, 0, screenWidth, screenHeight, PURPLE);
-                    DrawText("GAMEPLAY SCREEN", 20, 20, 40, MAROON);
-                    DrawText("PRESS ENTER or TAP to JUMP to ENDING SCREEN", 130, 220, 20, MAROON);
+                    //DrawRectangle(0, 0, screenWidth, screenHeight, PURPLE);
+                    //DrawText("GAMEPLAY SCREEN", 20, 20, 40, MAROON);
+                    //DrawText("PRESS ENTER or TAP to JUMP to ENDING SCREEN", 130, 220, 20, MAROON);
 
                 } break;
+                /*
                 case ENDING:
                 {
                     // TODO: Draw ENDING screen here!
@@ -75,6 +80,7 @@ void TitleScreen::drawTitleScreen()
                     DrawText("PRESS ENTER or TAP to RETURN to TITLE SCREEN", 120, 220, 20, DARKBLUE);
 
                 } break;
+                */
                 default: break;
             }
 }
