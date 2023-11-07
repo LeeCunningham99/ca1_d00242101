@@ -4,6 +4,7 @@ void TitleScreen::setupTitleScreen()
 {
     switch(currentScreen)
     {
+        /*
     case LOGO:
         {
             framesCounter++;//Count Frames
@@ -13,6 +14,7 @@ void TitleScreen::setupTitleScreen()
                 currentScreen = TITLE; //All of this means after 2 seconds it will go from logo screen to title screen.
             }
         } break;
+        */
 
         case TITLE:
         {
@@ -47,6 +49,7 @@ void TitleScreen::drawTitleScreen()
 {
     switch(currentScreen)
             {
+                /*
                 case LOGO:
                 {
                     // TODO: Draw LOGO screen here!
@@ -54,6 +57,7 @@ void TitleScreen::drawTitleScreen()
                     DrawText("WAIT for 2 SECONDS...", 290, 220, 20, GRAY);
 
                 } break;
+                */
                 case TITLE:
                 {
                     // TODO: Draw TITLE screen here!

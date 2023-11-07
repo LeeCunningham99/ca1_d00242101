@@ -4,8 +4,8 @@ class TitleScreen
 {
     public:
 
-    typedef enum TitlePage { LOGO = 0, TITLE, GAMEPLAY, ENDING } TitlePage;
-    TitlePage currentScreen = LOGO;
+    typedef enum TitlePage { TITLE = 0, GAMEPLAY } TitlePage;
+    TitlePage currentScreen = TITLE;
     int framesCounter;
     int screenWidth;
     int screenHeight;
