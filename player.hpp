@@ -7,8 +7,10 @@ public:
     Vector2 playerPosition;
     Texture2D playerImage;
     Rectangle source;
-    float width;
-    float height;
+    float pWidth;
+    float pHeight;
+    int posY;
+    int posX;
 
     int frame;
     float runningTime;
@@ -21,4 +23,5 @@ public:
     void animation();
     void unloadTexture();
     void drawPlayer();
+    void playerBoundaries();
 };

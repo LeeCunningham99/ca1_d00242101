@@ -59,6 +59,16 @@ void Player::drawPlayer()
     DrawTextureRec(playerImage, source, playerPosition, WHITE);
 }
 
+/*
+void Player::playerBoundaries()
+{
+    if (posY > 0) posY = 0;
+    if (posY > 900 - pHeight) posY = 900 - pHeight; 
+    //if (posX < 0) posX = 0;
+    //if (posX > GetScreenWidth() - width) posX = GetScreenWidth() - width; 
+}
+*/
+
 void Player::unloadTexture()
 {
     UnloadTexture(playerImage); // Unload player's spritesheet texture

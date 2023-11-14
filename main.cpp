@@ -35,12 +35,15 @@ int main()
 
     //Player Setup----------------------------------------------------------------------------------------
     Player player; //Creating A Player using Player Class.
-    player.width = 1100;
-    player.height = 250;
+    player.pWidth = 1100;
+    player.posY = 100;
+    player.pHeight = 250;
+    player.posX = 220;
     player.playerImage = LoadTexture("./assets/ssplayer.png"); //Player Image
     player.playerPosition = {100.f, 220.0f};
-    player.source = {0.f, 0.f, player.width / 3.0f, player.height}; //Source of Player's Rectangle
-
+    player.source = {0.f, 0.f, player.pWidth / 3.0f, player.pHeight}; //Source of Player's Rectangle
+    //player.playerBoundaries();
+    
     //Player Animation------------------------------------------------------------------------------------
     player.frame = 0;
     player.runningTime={};
@@ -61,6 +64,10 @@ int main()
     //float timePlayed = 0.0f;
     //bool pause = false;
     
+    //Boundaries
+
+
+
     //Background
     Texture2D background = LoadTexture("assets/Background.png"); //Background Image
     float scrollingBack = 0.0f;
