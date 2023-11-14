@@ -39,6 +39,28 @@ if (IsKeyDown(KEY_UP) || (IsKeyDown(KEY_W)))
         }
 }
 
+void Player::movementPowerUp() //Speed for player is increased if powerUpSpeed is set to true
+{
+if (IsKeyDown(KEY_UP) || (IsKeyDown(KEY_W)), powerUpSpeed = true)
+        {
+            playerPosition.y -= 2.0f;
+        }
+        if (IsKeyDown(KEY_DOWN) || (IsKeyDown(KEY_S))) 
+        {
+            playerPosition.y += 2.0f;
+        }
+        if (IsKeyDown(KEY_LEFT) || (IsKeyDown(KEY_A))) 
+        {
+            playerPosition.x -= 0.6f;
+        }
+        if (IsKeyDown(KEY_RIGHT) || (IsKeyDown(KEY_D))) 
+        {
+            //DrawTextureRec(playerImage, Rectangle{0,0,500, 200},Vector2{playerPosition},RAYWHITE);
+            playerPosition.x += 2.5f;
+        }
+}
+
+
 void Player::animation()
 {
     runningTime += deltaTime;

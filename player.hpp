@@ -18,10 +18,13 @@ public:
     float updateTime;
     float deltaTime;
 
+    bool powerUpSpeed = false;
+
     //void playerSetup();
     void movement();
     void animation();
     void unloadTexture();
     void drawPlayer();
     void playerBoundaries();
+    void movementPowerUp();
 };

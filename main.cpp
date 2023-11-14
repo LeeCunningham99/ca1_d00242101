@@ -15,6 +15,7 @@
 #include "player.hpp"
 #include "menu.hpp"
 #include "titleScreen.hpp"
+#include "speedPowerUp.hpp"
 
 using namespace std;
 int main()
@@ -48,6 +49,10 @@ int main()
     player.frame = 0;
     player.runningTime={};
     player.updateTime={1.f/10.f};
+
+    //Power-Up
+    PowerUp powerUp;
+    //powerUp.powerUpSpeed = false;
 
     //Menu Setup------------------------------------------------------------------------------------------
     Menu menu;
