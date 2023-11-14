@@ -27,4 +27,5 @@ public:
     void drawPlayer();
     void playerBoundaries();
     void movementPowerUp();
+    void powerUpStart();
 };

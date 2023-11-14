@@ -60,6 +60,12 @@ if (IsKeyDown(KEY_UP) || (IsKeyDown(KEY_W)), powerUpSpeed = true)
         }
 }
 
+void Player::powerUpStart()
+{
+    //TO - DO:
+    //AFTER SAY 10 SECONDS HAVE SPEED OF PLAYER INCREASE FOR 10 SECONDS THEN DECREASE AGAIN, MAYBE HAVE THIS ON A LOOP
+    //REMEMBER TO SET BOOLEAN TO TRUE!!!
+}
 
 void Player::animation()
 {
