@@ -11,6 +11,7 @@ public:
     float pHeight;
     int posY;
     int posX;
+    float pSpeed;
 
     int frame;
     float runningTime;

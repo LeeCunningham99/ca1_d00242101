@@ -42,6 +42,7 @@ int main()
     player.playerImage = LoadTexture("./assets/ssplayer.png"); //Player Image
     player.playerPosition = {100.f, 220.0f};
     player.source = {0.f, 0.f, player.pWidth / 3.0f, player.pHeight}; //Source of Player's Rectangle
+    player.pSpeed = 1.0f;
     //player.playerBoundaries();
     
     //Player Animation------------------------------------------------------------------------------------

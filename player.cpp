@@ -22,20 +22,20 @@ void Player::movement()
 {
 if (IsKeyDown(KEY_UP) || (IsKeyDown(KEY_W)))
         {
-            playerPosition.y -= 1.0f;
+            playerPosition.y -= pSpeed;
         }
         if (IsKeyDown(KEY_DOWN) || (IsKeyDown(KEY_S))) 
         {
-            playerPosition.y += 1.0f;
+            playerPosition.y += pSpeed;
         }
         if (IsKeyDown(KEY_LEFT) || (IsKeyDown(KEY_A))) 
         {
-            playerPosition.x -= 0.2f;
+            playerPosition.x -= pSpeed -0.8f;
         }
         if (IsKeyDown(KEY_RIGHT) || (IsKeyDown(KEY_D))) 
         {
             //DrawTextureRec(playerImage, Rectangle{0,0,500, 200},Vector2{playerPosition},RAYWHITE);
-            playerPosition.x += 1.5f;
+            playerPosition.x += pSpeed + 0.5f;
         }
 }
 
@@ -43,20 +43,20 @@ void Player::movementPowerUp() //Speed for player is increased if powerUpSpeed i
 {
 if (IsKeyDown(KEY_UP) || (IsKeyDown(KEY_W)), powerUpSpeed = true)
         {
-            playerPosition.y -= 2.0f;
+            playerPosition.y -= pSpeed + 1.0f;
         }
         if (IsKeyDown(KEY_DOWN) || (IsKeyDown(KEY_S))) 
         {
-            playerPosition.y += 2.0f;
+            playerPosition.y += pSpeed + 0.8f;
         }
         if (IsKeyDown(KEY_LEFT) || (IsKeyDown(KEY_A))) 
         {
-            playerPosition.x -= 0.6f;
+            playerPosition.x -= pSpeed -0.2f;
         }
         if (IsKeyDown(KEY_RIGHT) || (IsKeyDown(KEY_D))) 
         {
             //DrawTextureRec(playerImage, Rectangle{0,0,500, 200},Vector2{playerPosition},RAYWHITE);
-            playerPosition.x += 2.5f;
+            playerPosition.x += pSpeed + 1.5f;
         }
 }
 
