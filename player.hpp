@@ -19,7 +19,10 @@ public:
     float updateTime;
     float deltaTime;
 
+    //powerup related paramaters
     bool powerUpSpeed = false;
+    float currentTime;
+    float powerTime;
 
     //void playerSetup();
     void movement();
@@ -29,4 +32,5 @@ public:
     void playerBoundaries();
     void movementPowerUp();
     void powerUpStart();
+    void movementController();
 };

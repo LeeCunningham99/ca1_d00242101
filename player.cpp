@@ -41,7 +41,7 @@ if (IsKeyDown(KEY_UP) || (IsKeyDown(KEY_W)))
 
 void Player::movementPowerUp() //Speed for player is increased if powerUpSpeed is set to true
 {
-if (IsKeyDown(KEY_UP) || (IsKeyDown(KEY_W)), powerUpSpeed = true)
+if (IsKeyDown(KEY_UP) || (IsKeyDown(KEY_W)))
         {
             playerPosition.y -= pSpeed + 1.0f;
         }
@@ -60,11 +60,48 @@ if (IsKeyDown(KEY_UP) || (IsKeyDown(KEY_W)), powerUpSpeed = true)
         }
 }
 
+void Player::movementController()
+{
+    if (powerUpSpeed == true)
+    {
+        movementPowerUp();
+        
+    }
+    else //if (powerUpSpeed == false)
+    {   
+        movement();  
+    }
+}
+
 void Player::powerUpStart()
 {
     //TO - DO:
     //AFTER SAY 10 SECONDS HAVE SPEED OF PLAYER INCREASE FOR 10 SECONDS THEN DECREASE AGAIN, MAYBE HAVE THIS ON A LOOP
     //REMEMBER TO SET BOOLEAN TO TRUE!!!
+
+
+
+
+
+
+
+
+//stack overflow
+    int i;
+    int count = 1;
+    for (;;)
+    {
+        for (i = 0 ; i < powerTime ; i++)
+        {
+            usleep(1000 * 1000);
+            powerUpSpeed = true;
+        }
+        return 0;
+    }
+
+
+
+
 }
 
 void Player::animation()

@@ -43,6 +43,8 @@ int main()
     player.playerPosition = {100.f, 220.0f};
     player.source = {0.f, 0.f, player.pWidth / 3.0f, player.pHeight}; //Source of Player's Rectangle
     player.pSpeed = 1.0f;
+    player.powerTime = 10;
+    player.currentTime = 0;
     //player.playerBoundaries();
     
     //Player Animation------------------------------------------------------------------------------------
@@ -60,7 +62,7 @@ int main()
     InitAudioDevice(); //Initializes The Audio Devices
     Music music = LoadMusicStream("assets/Theme.mp3"); //Loads .mp3 file
     music.looping = true;
-    PlayMusicStream(music);
+    //PlayMusicStream(music);
     //float pitch = 1.0f;
     //float timePlayed = 0.0f;
     //bool pause = false;
@@ -81,7 +83,8 @@ int main()
         titleScreen.setupTitleScreen(); //Sets up Title Screen
 
         player.deltaTime = GetFrameTime();
-        player.movement();
+        //player.movement();
+        player.movementController();
         UpdateMusicStream(music);
         //Update
         scrollingBack -= 1.0f;
@@ -92,7 +95,7 @@ int main()
 
 
         //PowerUp Speed
-        player.movementPowerUp();
+        //player.movementPowerUp();
 
         //Background--------------------------------------------------------------------------------------------------------------------------------------
             // Draw background image twice
