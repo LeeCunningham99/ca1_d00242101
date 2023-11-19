@@ -102,7 +102,7 @@ int main()
     //Timer-----------------------------------------------------------------------------------------------
 
     Timer gameTimer = { 0 };
-    float gameLife = 2.0f;
+    float gameLife = 10.0f;
 
     //Background------------------------------------------------------------------------------------------
     Texture2D background = LoadTexture("assets/Background.png"); //Background Image
@@ -133,17 +133,18 @@ int main()
         if ((player.playerPosition.y + 50.f) > 800) player.playerPosition.y = 800 - 50.f; // If Player's Y postion + it's size is greater than the screenheight then take away player's size from screenheight.
 
         //Timer Initialisation------------------------------------------------------------------------------
+        //From same reference as at top of file
         StartTimer(&gameTimer, gameLife);
         UpdateTimer(&gameTimer);
         if (!TimerDone(&gameTimer))
         {
-            player.pSpeed + 10.0f;
+            player.powerUpSpeed = true;
         }
 
         BeginDrawing();
         ClearBackground(BLACK);
 
-        
+       // bool powerUpSpeed
 
 
         //PowerUp Speed

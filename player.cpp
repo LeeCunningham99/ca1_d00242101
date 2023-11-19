@@ -1,23 +1,5 @@
 #include "player.hpp"
 
-/*
-float deltaTime = GetFrameTime();
-float runningTime{};
-const float updateTime{1.f/10.f};
-int frame = 0;
-Rectangle source {0.f, 0.f, player.width / 3.0f, (float) player.height};
-*/
-/*
-void playerSetup()
-{
-    //Rectangle source {0.f, 0.f, player.width / 3.0f, (float) player.height};
-    Vector2 position {100.f, 220.0f};
-    int frame = 0;
-    float runningTime{};
-    const float updateTime{1.f/10.f};
-}
-*/
-
 void Player::movement()
 {
 if (IsKeyDown(KEY_UP) || (IsKeyDown(KEY_W)))
@@ -34,7 +16,6 @@ if (IsKeyDown(KEY_UP) || (IsKeyDown(KEY_W)))
         }
         if (IsKeyDown(KEY_RIGHT) || (IsKeyDown(KEY_D))) 
         {
-            //DrawTextureRec(playerImage, Rectangle{0,0,500, 200},Vector2{playerPosition},RAYWHITE);
             playerPosition.x += pSpeed + 0.5f;
         }
 }
@@ -114,16 +95,6 @@ void Player::drawPlayer()
 {
     DrawTextureRec(playerImage, source, playerPosition, WHITE);
 }
-
-/*
-void Player::playerBoundaries()
-{
-    if (posY > 0) posY = 0;
-    if (posY > 900 - pHeight) posY = 900 - pHeight; 
-    //if (posX < 0) posX = 0;
-    //if (posX > GetScreenWidth() - width) posX = GetScreenWidth() - width; 
-}
-*/
 
 void Player::unloadTexture()
 {
