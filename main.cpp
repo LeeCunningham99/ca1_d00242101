@@ -11,12 +11,42 @@
 *
 ********************************************************************************************/
 #include "raylib.h"
+#include "raymath.h"
 #include <iostream>
 #include "player.hpp"
 #include "menu.hpp"
 #include "titleScreen.hpp"
 
 using namespace std;
+
+//Timer------------------------------------------------------------------------------------------------
+    //REFERENCE
+    //https://www.youtube.com/watch?v=vGlvTWUctTQ
+    typedef struct
+    {
+        float Lifetime;
+    }Timer;
+
+    void StartTimer(Timer* timer, float Lifetime)
+    {
+        if (timer != NULL)
+        timer->Lifetime = Lifetime;
+    }
+
+    void UpdateTimer(Timer* timer)
+    {
+        if (timer != NULL && timer->Lifetime > 0)
+        timer->Lifetime -= GetFrameTime();
+    }
+
+    bool TimerDone (Timer* timer)
+    {
+        if (timer != NULL)
+        return timer->Lifetime <= 0;
+
+        return false;
+    }
+
 int main()
 {
     //Initialization--------------------------------------------------------------------------------------
@@ -45,7 +75,6 @@ int main()
     player.pSpeed = 1.0f;
     player.powerTime = 10;
     player.currentTime = 0;
-    Vector2 newPos = player.playerPosition; 
     //player.playerSize = 100;
     //player.bSpeed = {5.0f, 4.0f};
     //player.playerBoundaries();
@@ -61,25 +90,26 @@ int main()
     menu.exitWindow = false;
     menu.menuScreenWidth = screenWidth;
 
-    //Audio------------------------------------------------------------------------------------------------
+    //Audio-----------------------------------------------------------------------------------------------
     InitAudioDevice(); //Initializes The Audio Devices
     Music music = LoadMusicStream("assets/Theme.mp3"); //Loads .mp3 file
     music.looping = true;
-    //PlayMusicStream(music);
+    PlayMusicStream(music);
     //float pitch = 1.0f;
     //float timePlayed = 0.0f;
     //bool pause = false;
-    
-    //Boundaries
 
+    //Timer-----------------------------------------------------------------------------------------------
 
+    Timer gameTimer = { 0 };
+    float gameLife = 2.0f;
 
-    //Background
+    //Background------------------------------------------------------------------------------------------
     Texture2D background = LoadTexture("assets/Background.png"); //Background Image
     float scrollingBack = 0.0f;
     //float scrollingMid = 0.0f;
     SetTargetFPS(60);           
-    //Main game loop---------------------------------------------------------------
+    //Main game loop--------------------------------------------------------------------------------------
 
     while (!menu.exitWindow) //Displays an Exit option when esc is pressed
     {
@@ -102,6 +132,14 @@ int main()
         if ((player.playerPosition.y - 50.f) < 0) player.playerPosition.y = 50.f; //If Player's Y position - it's size is less than 0 then set player's Y position to = it's size.
         if ((player.playerPosition.y + 50.f) > 800) player.playerPosition.y = 800 - 50.f; // If Player's Y postion + it's size is greater than the screenheight then take away player's size from screenheight.
 
+        //Timer Initialisation------------------------------------------------------------------------------
+        StartTimer(&gameTimer, gameLife);
+        UpdateTimer(&gameTimer);
+        if (!TimerDone(&gameTimer))
+        {
+            player.pSpeed + 10.0f;
+        }
+
         BeginDrawing();
         ClearBackground(BLACK);
 
@@ -111,22 +149,22 @@ int main()
         //PowerUp Speed
         //player.movementPowerUp();
 
-        //Background--------------------------------------------------------------------------------------------------------------------------------------
+        //Background----------------------------------------------------------------------------------------
             // Draw background image twice
             // NOTE: Texture is scaled twice its size
             DrawTextureEx(background, (Vector2){ scrollingBack, 0 }, 0.0f, 0.79f, WHITE);
             DrawTextureEx(background, (Vector2){ background.width*2 + scrollingBack, 20 }, 0.0f, 2.0f, WHITE);
             
-          //Player Animation----------------------------------------------------------------------------------------------------------------------------
+          //Player Animation--------------------------------------------------------------------------------
           player.animation();
          
-        //Player Texture Drawn--------------------------------------------------------------------------------------------------------------------------
+        //Player Texture Drawn------------------------------------------------------------------------------
         player.drawPlayer();
         //Text 
             DrawText("SPEED - KM/H", 10, 10, 60, RED);
             DrawText("Points: ", screenWidth - 310, screenHeight - 890, 60, RED);
 
-//menu--------------------------------------------------------------------------------------------------------------------------------------------
+//menu------------------------------------------------------------------------------------------------------
         menu.menuExit();
         menu.gameClose();
 
@@ -135,7 +173,7 @@ int main()
         EndDrawing();
     }
     // De-Initialization
-    //--------------------------------------------------------------------------------------
+    //------------------------------------------------------------------------------------------------------
     UnloadTexture(background);  // Unload background texture
     player.unloadTexture();
     UnloadMusicStream(music);

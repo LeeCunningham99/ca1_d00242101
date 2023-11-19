@@ -30,7 +30,7 @@ if (IsKeyDown(KEY_UP) || (IsKeyDown(KEY_W)))
         }
         if (IsKeyDown(KEY_LEFT) || (IsKeyDown(KEY_A))) 
         {
-            playerPosition.x -= pSpeed -0.8f;
+            playerPosition.x -= pSpeed + 1.5f;
         }
         if (IsKeyDown(KEY_RIGHT) || (IsKeyDown(KEY_D))) 
         {
