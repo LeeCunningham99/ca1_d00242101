@@ -79,13 +79,7 @@ void Player::powerUpStart()
     //AFTER SAY 10 SECONDS HAVE SPEED OF PLAYER INCREASE FOR 10 SECONDS THEN DECREASE AGAIN, MAYBE HAVE THIS ON A LOOP
     //REMEMBER TO SET BOOLEAN TO TRUE!!!
 
-
-
-
-
-
-
-
+/*
 //stack overflow
     int i;
     int count = 1;
@@ -98,10 +92,7 @@ void Player::powerUpStart()
         }
         return 0;
     }
-
-
-
-
+    */
 }
 
 void Player::animation()

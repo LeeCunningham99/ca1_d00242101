@@ -45,6 +45,9 @@ int main()
     player.pSpeed = 1.0f;
     player.powerTime = 10;
     player.currentTime = 0;
+    Vector2 newPos = player.playerPosition; 
+    //player.playerSize = 100;
+    //player.bSpeed = {5.0f, 4.0f};
     //player.playerBoundaries();
     
     //Player Animation------------------------------------------------------------------------------------
@@ -90,8 +93,19 @@ int main()
         scrollingBack -= 1.0f;
         if (scrollingBack <= -background.width*2) scrollingBack = 0;
 
+        //World Boundaries
+        //REFERENCE:
+        // https://copyprogramming.com/howto/how-to-check-if-ball-colides-with-edge-of-window-in-c-with-raylib
+        
+        if ((player.playerPosition.x - 50.f) < 0) player.playerPosition.x = 50.f; //If Player's X position - it's size is less than 0 then set player's X position to = it's size.
+        if ((player.playerPosition.x + 50.f) > 1600) player.playerPosition.x = 1600 - 50.f; // If Player's X postion + it's size is greater than the screenwidth then take away player's size from screenwidth.
+        if ((player.playerPosition.y - 50.f) < 0) player.playerPosition.y = 50.f; //If Player's Y position - it's size is less than 0 then set player's Y position to = it's size.
+        if ((player.playerPosition.y + 50.f) > 800) player.playerPosition.y = 800 - 50.f; // If Player's Y postion + it's size is greater than the screenheight then take away player's size from screenheight.
+
         BeginDrawing();
         ClearBackground(BLACK);
+
+        
 
 
         //PowerUp Speed

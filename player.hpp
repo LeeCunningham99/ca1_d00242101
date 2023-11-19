@@ -12,6 +12,8 @@ public:
     int posY;
     int posX;
     float pSpeed;
+    int playerSize;
+    Vector2 bSpeed;
 
     int frame;
     float runningTime;
