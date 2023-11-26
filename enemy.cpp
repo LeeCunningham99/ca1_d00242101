@@ -4,7 +4,7 @@ void Enemy::eMovement()
 {
     if (eActive == true)
     {
-    ePosX -= 20;
+    ePosX -= 20.0f;
     } 
 }
 
@@ -32,3 +32,7 @@ void Enemy::unloadEnemyTexture()
 {
     UnloadTexture(eImage); // Unload enemy's spritesheet texture
 }
+
+
+
+
