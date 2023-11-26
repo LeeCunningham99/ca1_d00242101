@@ -93,7 +93,7 @@ int main()
 
 //Scoring---------------------------------------------------------------------------------------------
     Score score;
-    score.score1 = 0;
+    score.points = 0;
     score.fines = 0;
     bool collision = false;
     Rectangle boxCollision = {0};
@@ -129,7 +129,7 @@ int main()
     InitAudioDevice(); //Initializes The Audio Devices
     Music music = LoadMusicStream("assets/Theme.mp3"); //Loads .mp3 file
     music.looping = true;
-    PlayMusicStream(music);
+    //PlayMusicStream(music);
     //float pitch = 1.0f;
     //float timePlayed = 0.0f;
     //bool pause = false;
@@ -185,6 +185,7 @@ int main()
 
         BeginDrawing();
         ClearBackground(BLACK);
+        
 
 //Background----------------------------------------------------------------------------------------
 // Draw background image twice
@@ -200,6 +201,8 @@ int main()
 //Text---------------------------------------------------------------------------------------------- 
         DrawText("Avoid Speeding Fines", 10, 10, 60, RED);
         //DrawText("Points: ", screenWidth - 310, screenHeight - 890, 60, RED);
+        DrawText(TextFormat("Fines: %i", score.fines), 280, 130, 40, MAROON);
+        DrawText(TextFormat("Points: %i", score.points), 250, 350, 20, BLUE);
 
 //Enemy Animation-----------------------------------------------------------------------------------
         enemy.eAnimation();
@@ -207,15 +210,45 @@ int main()
         enemy.drawEnemy();
 
 //Scoring-------------------------------------------------------------------------------------------
+        //TEST PURPOSES
+        if (IsKeyDown(KEY_F))
+        {
+            score.fines++;
+        }
+
+        if (IsKeyDown(KEY_P))
+        {
+            score.points++;
+        }
+
+        if (score.points > 5)
+        {
+            score.drawWinScreen();
+            titleScreen.framesCounter++;//Count Frames
+
+            if (titleScreen.framesCounter > 120)
+            {
+                titleScreen.drawTitleScreen();
+            }
+        }
+//--------------------------------------------------------------
+
         if (collision)
         {
             DrawText("SPEEDING FINE!", GetScreenWidth()/2 - MeasureText("+1 FINE!", 20)/2, screenHeight/2 - 10, 20, RED);
             score.fines ++;
+            
         }
-        if (score.fines = 5)
+        if (score.fines == 5)
         {
             score.drawLoseScreen();
+            titleScreen.framesCounter++;
+            if (titleScreen.framesCounter > 120)
+            {
+                titleScreen.drawTitleScreen();
+            }
         }
+
 
 //menu------------------------------------------------------------------------------------------------------
         menu.menuExit();

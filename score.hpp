@@ -8,6 +8,7 @@ class Score
     public:
     int score1;
     int fines;
+    int points;
     //int score2;
     Texture2D winImage;
     Texture2D loseImage;
