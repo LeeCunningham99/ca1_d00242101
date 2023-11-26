@@ -26,4 +26,5 @@ public:
     void eAnimation();
     void unloadEnemyTexture();
     void drawEnemy();
+    void addScore();
 };

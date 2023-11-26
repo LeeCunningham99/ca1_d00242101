@@ -14,11 +14,13 @@
 
 #include "raylib.h"
 #include "raymath.h"
+#include <stdlib.h>
 #include <iostream>
 #include "player.hpp"
 #include "menu.hpp"
 #include "titleScreen.hpp"
 #include "enemy.hpp"
+#include "score.hpp"
 
 #define numEnemies 1
 
@@ -89,6 +91,15 @@ int main()
     player.runningTime={};
     player.updateTime={1.f/10.f};
 
+//Scoring---------------------------------------------------------------------------------------------
+    Score score;
+    score.score1 = 0;
+    score.fines = 0;
+    bool collision = false;
+    Rectangle boxCollision = {0};
+    score.winImage = LoadTexture("./assets/winImage.png");
+    score.loseImage = LoadTexture("./assets/loseImage.png");
+
 //Enemy Setup----------------------------------------------------------------------------------------
     Enemy enemy; //Creating A Player using Player Class.
     enemy.eWidth = 1100;
@@ -143,14 +154,8 @@ int main()
         UpdateMusicStream(music);
 
         enemy.eDeltaTime = GetFrameTime();
-        
-        for (int i = 0; i < numEnemies; i++)
-    {
-        if (enemy[i].eActive)
-        {
         enemy.eMovement();
-        }
-    }
+       
         //Update background scrolling
         scrollingBack -= 1.0f;
         if (scrollingBack <= -background.width*2) scrollingBack = 0;
@@ -172,6 +177,11 @@ int main()
         {
             player.powerUpSpeed = true;
         }
+
+//Scoring--------------------------------------------------------------------------------------------
+        collision = CheckCollisionRecs(player.source, enemy.eSource);
+
+        if (collision) boxCollision = GetCollisionRec(player.source, enemy.eSource);
 
         BeginDrawing();
         ClearBackground(BLACK);
@@ -196,6 +206,17 @@ int main()
         //Enemy Texture Drawn
         enemy.drawEnemy();
 
+//Scoring-------------------------------------------------------------------------------------------
+        if (collision)
+        {
+            DrawText("SPEEDING FINE!", GetScreenWidth()/2 - MeasureText("+1 FINE!", 20)/2, screenHeight/2 - 10, 20, RED);
+            score.fines ++;
+        }
+        if (score.fines = 5)
+        {
+            score.drawLoseScreen();
+        }
+
 //menu------------------------------------------------------------------------------------------------------
         menu.menuExit();
         menu.gameClose();
@@ -211,6 +232,7 @@ int main()
     enemy.unloadEnemyTexture();
     UnloadMusicStream(music);
     titleScreen.unloadTitleTexture();
+    score.UnloadScoreTextures();
     
     CloseWindow();      
     return 0;
