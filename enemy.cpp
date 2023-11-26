@@ -2,7 +2,13 @@
 
 void Enemy::eMovement()
 {
-
+    
+            if (ePosX > Enemy[i].eSource.x)
+            {
+                Enemy[i].eSource.x += 1;
+            }
+        
+    
 }
 
 void Enemy::eAnimation()

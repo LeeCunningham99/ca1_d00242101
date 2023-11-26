@@ -20,6 +20,8 @@
 #include "titleScreen.hpp"
 #include "enemy.hpp"
 
+#define numEnemies 1
+
 using namespace std;
 
 //Timer------------------------------------------------------------------------------------------------
@@ -97,6 +99,7 @@ int main()
     enemy.ePosition = {1200.f, 220.0f};
     enemy.eSource = {0.f, 0.f, player.pWidth / 3.0f, player.pHeight}; //Source of Player's Rectangle
     enemy.eSpeed = 1.0f;
+    enemy.eActive = true;
     
 //Enemy Animation------------------------------------------------------------------------------------
     enemy.eFrame = 0;
@@ -140,7 +143,14 @@ int main()
         UpdateMusicStream(music);
 
         enemy.eDeltaTime = GetFrameTime();
+        
+        for (int i = 0; i < numEnemies; i++)
+    {
+        if (enemy[i].eActive)
+        {
         enemy.eMovement();
+        }
+    }
         //Update background scrolling
         scrollingBack -= 1.0f;
         if (scrollingBack <= -background.width*2) scrollingBack = 0;

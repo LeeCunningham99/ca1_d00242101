@@ -13,6 +13,7 @@ public:
     int ePosX;
     float eSpeed;
     int eSize;
+    bool eActive;
 
 //Enemy Animation
     int eFrame;
