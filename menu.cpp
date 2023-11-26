@@ -1,5 +1,8 @@
 #include "menu.hpp"
 
+//REFERENCES
+// https://www.raylib.com/examples/core/loader.html?name=core_window_should_close
+
 //bool exitApplication = false;
 //bool exitWindow = false;
 
@@ -19,8 +22,8 @@ void Menu::gameClose()
     if (exitWindowRequested)
             {
                 DrawRectangle(0, 100, menuScreenWidth, 200, BLACK);
-                DrawText("Are you sure you want to exit program? [Y/N]", 40, 180, 30, WHITE);
+                DrawText("QUIT GAME? [Y/N]", 40, 180, 30, WHITE);
             }
-            else DrawText("Try to close the window to get confirmation message!", 120, 200, 20, LIGHTGRAY);
+            else DrawText("TRY TO WIN", 120, 200, 20, LIGHTGRAY);
 
 }

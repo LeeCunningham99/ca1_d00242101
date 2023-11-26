@@ -24,7 +24,7 @@ using namespace std;
 
 //Timer------------------------------------------------------------------------------------------------
 //REFERENCE
-//https://www.youtube.com/watch?v=vGlvTWUctTQ
+// https://www.youtube.com/watch?v=vGlvTWUctTQ
     typedef struct
     {
         float Lifetime;
@@ -110,6 +110,8 @@ int main()
     menu.menuScreenWidth = screenWidth;
 
 //Audio-----------------------------------------------------------------------------------------------
+//REFERENCE
+// https://www.raylib.com/examples/audio/loader.html?name=audio_music_stream
     InitAudioDevice(); //Initializes The Audio Devices
     Music music = LoadMusicStream("assets/Theme.mp3"); //Loads .mp3 file
     music.looping = true;

@@ -1,5 +1,8 @@
 #include "titleScreen.hpp"
 
+//REFERENCES
+// https://www.raylib.com/examples/core/loader.html?name=core_basic_screen_manager
+
 void TitleScreen::setupTitleScreen()
 {
     switch(currentScreen)

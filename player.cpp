@@ -1,4 +1,9 @@
 #include "player.hpp"
+//REFERENCES
+// https://www.youtube.com/watch?v=VsNbbOjcRxw&t=44s
+// https://www.youtube.com/watch?v=x3y16-cShdQ
+// https://www.youtube.com/watch?v=VFOIMeEePW4
+//Above references are part of a video series. Code was used as a base to create the current player class. 
 
 void Player::movement()
 {
