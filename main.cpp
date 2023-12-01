@@ -161,6 +161,9 @@ int main()
 //Scoring--------------------------------------------------------------------------------------------
         collision = CheckCollisionRecs(player.source, enemy.eSource);
         if (collision) boxCollision = GetCollisionRec(player.source, enemy.eSource);
+
+
+        
 //DRAWING BEGINS ----------------------------------------------------------------------------------
         BeginDrawing();
         ClearBackground(BLACK);
