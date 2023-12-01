@@ -2,10 +2,19 @@
 
 void Enemy::eMovement()
 {
+    /*
     if (eActive == true)
     {
     ePosX -= 20.0f;
-    } 
+    }
+    */
+    //eScrolling -= 0.7f;
+    //if (eScrolling <= -eImage.width*0) eScrolling = 0;
+    if (eActive == true)
+    {
+        ePosX -= eScrolling;
+    }
+
 }
 
 void Enemy::eAnimation()
@@ -25,6 +34,7 @@ void Enemy::eAnimation()
 
 void Enemy::drawEnemy()
 {
+    eScrolling -= 0.7f;
     DrawTextureRec(eImage, eSource, ePosition, WHITE);
 }
 
@@ -32,7 +42,3 @@ void Enemy::unloadEnemyTexture()
 {
     UnloadTexture(eImage); // Unload enemy's spritesheet texture
 }
-
-
-
-

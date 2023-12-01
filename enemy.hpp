@@ -14,6 +14,7 @@ public:
     float eSpeed;
     int eSize;
     bool eActive;
+    float eScrolling = 0.0f;
 
 //Enemy Animation
     int eFrame;

@@ -8,6 +8,7 @@ class Score
     public:
     int score1;
     int fines;
+    //bool fines1 = false;
     int points;
     //int score2;
     Texture2D winImage;

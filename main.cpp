@@ -87,6 +87,7 @@ int main()
     Score score;
     score.points = 0;
     score.fines = 0;
+    //score.fines1 = false;
     bool collision = false;
     Rectangle boxCollision = {0};
     score.winImage = LoadTexture("./assets/winImage.png");
@@ -160,6 +161,7 @@ int main()
 //Scoring--------------------------------------------------------------------------------------------
         collision = CheckCollisionRecs(player.source, enemy.eSource);
         if (collision) boxCollision = GetCollisionRec(player.source, enemy.eSource);
+//DRAWING BEGINS ----------------------------------------------------------------------------------
         BeginDrawing();
         ClearBackground(BLACK);
 //Background----------------------------------------------------------------------------------------
@@ -208,10 +210,12 @@ int main()
 //--------------------------------------------------------------
         if (collision)
         {
-            //DrawText("SPEEDING FINE!", GetScreenWidth()/2 - MeasureText("+1 FINE!", 20)/2, screenHeight/2 - 10, 20, RED);
-            score.fines ++;         
+            DrawText("SPEEDING FINE!", GetScreenWidth()/2 - MeasureText("+1 FINE!", 20)/2, screenHeight/2 - 10, 20, RED);
+            DrawRectangleRec(boxCollision, LIME);
+            score.fines ++; 
+            score.fines = true;        
         }
-        if (score.fines == 100)
+        if (score.fines == true)
         {
             score.drawLoseScreen();
             titleScreen.framesCounter++;
