@@ -189,12 +189,22 @@ int main()
             score.fines++;
         }
 
+        if (IsKeyDown(KEY_F) && score.fines == 100)
+        {
+            score.drawLoseScreen();
+        }
+
         if (IsKeyDown(KEY_P))
         {
             score.points++;
         }
+
+        if (IsKeyDown(KEY_P) && score.points == 500)
+        {
+            score.drawWinScreen();
+        }
 //---------------------------------------------------------------------------------------------------------------
-        if (score.points <= 500)
+        if (score.points >= 500)
         {
             //Texture2D winscrteen = LoadTexture("assets/winImage.png");
             //DrawTextureEx(winscrteen, (Vector2){ 0 }, 0.0f, 0.79f, WHITE);
@@ -215,7 +225,7 @@ int main()
             score.fines ++; 
             score.fines = true;        
         }
-        if (score.fines == true)
+        if (score.fines == true && score.fines >= 100)
         {
             score.drawLoseScreen();
             titleScreen.framesCounter++;
