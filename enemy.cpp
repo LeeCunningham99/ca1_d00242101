@@ -34,7 +34,7 @@ void Enemy::eAnimation()
 
 void Enemy::drawEnemy()
 {
-    eScrolling -= 0.7f;
+    //eScrolling -= 0.7f;
     DrawTextureRec(eImage, eSource, ePosition, WHITE);
 }
 

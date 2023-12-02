@@ -92,6 +92,10 @@ int main()
     Rectangle boxCollision = {0};
     score.winImage = LoadTexture("./assets/winImage.png");
     score.loseImage = LoadTexture("./assets/loseImage.png");
+    score.loseSource = {0.f, 0.f, screenWidth, screenHeight};  
+    score.losePosition = {0.f, 0.f};
+    score.winSource = {0.f, 0.f, screenWidth, screenHeight}; 
+    score.winPosition = {0.f, 0.f};
 //Enemy Setup----------------------------------------------------------------------------------------
     Enemy enemy; //Creating A Player using Player Class.
     enemy.eWidth = 1100;
@@ -118,7 +122,7 @@ int main()
     InitAudioDevice(); //Initializes The Audio Devices
     Music music = LoadMusicStream("assets/Theme.mp3"); //Loads .mp3 file
     music.looping = true;
-    PlayMusicStream(music);
+    //PlayMusicStream(music);
     //float pitch = 1.0f;
     //float timePlayed = 0.0f;
     //bool pause = false;
@@ -161,7 +165,7 @@ int main()
 //Scoring--------------------------------------------------------------------------------------------
         collision = CheckCollisionRecs(player.source, enemy.eSource);
         if (collision) boxCollision = GetCollisionRec(player.source, enemy.eSource);
-
+        
 
         
 //DRAWING BEGINS ----------------------------------------------------------------------------------
@@ -192,7 +196,7 @@ int main()
             score.fines++;
         }
 
-        if (IsKeyDown(KEY_F) && score.fines == 100)
+        if (IsKeyDown(KEY_F) && score.fines >= 100)
         {
             score.drawLoseScreen();
         }
@@ -202,12 +206,12 @@ int main()
             score.points++;
         }
 
-        if (IsKeyDown(KEY_P) && score.points == 500)
+        if (IsKeyDown(KEY_P) && score.points >= 500)
         {
             score.drawWinScreen();
         }
 //---------------------------------------------------------------------------------------------------------------
-        if (score.points >= 500)
+        if (score.points >= 100)
         {
             //Texture2D winscrteen = LoadTexture("assets/winImage.png");
             //DrawTextureEx(winscrteen, (Vector2){ 0 }, 0.0f, 0.79f, WHITE);
@@ -220,7 +224,22 @@ int main()
                 menu.gameClose();
             }
         }
+
+        if (score.fines >= 100)
+        {
+            //Texture2D winscrteen = LoadTexture("assets/winImage.png");
+            //DrawTextureEx(winscrteen, (Vector2){ 0 }, 0.0f, 0.79f, WHITE);
+            score.drawLoseScreen();
+            titleScreen.framesCounter++;//Count Frames
+            if (titleScreen.framesCounter > 120)
+            {
+                //titleScreen.setupTitleScreen();
+                //titleScreen.drawTitleScreen();
+                menu.gameClose();
+            }
+        }
 //--------------------------------------------------------------
+        /*
         if (collision)
         {
             DrawText("SPEEDING FINE!", GetScreenWidth()/2 - MeasureText("+1 FINE!", 20)/2, screenHeight/2 - 10, 20, RED);
@@ -228,15 +247,18 @@ int main()
             score.fines ++; 
             score.fines = true;        
         }
-        if (score.fines == true && score.fines >= 100)
+        if (score.fines >= 100)
         {
             score.drawLoseScreen();
+            
             titleScreen.framesCounter++;
             if (titleScreen.framesCounter > 120)
             {
                 menu.gameClose();
             }
+            
         }
+        */
 //menu------------------------------------------------------------------------------------------------------
         menu.menuExit();
         menu.gameClose();
