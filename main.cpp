@@ -20,7 +20,7 @@
 #include "titleScreen.hpp"
 #include "enemy.hpp"
 #include "score.hpp"
-#define numEnemies 1
+#define numEnemies 2
 using namespace std;
 //Timer------------------------------------------------------------------------------------------------
 //REFERENCE
@@ -181,35 +181,38 @@ int main()
 //Player Texture Drawn------------------------------------------------------------------------------
         player.drawPlayer();
 //Text---------------------------------------------------------------------------------------------- 
-        DrawText("Avoid Speeding Fines!", 10, 10, 60, RED);
+        //DrawText("Avoid Speeding Fines!", 10, 10, 60, RED);
         //DrawText("Points: ", screenWidth - 310, screenHeight - 890, 60, RED);
-        DrawText(TextFormat("Fines: %i", score.fines), 750, 20, 50, MAROON);
-        DrawText(TextFormat("Points: %i", score.points), 1100, 20, 50, BLUE);
+        //DrawText(TextFormat("Fines: %i", score.fines), 750, 20, 50, MAROON);
+        //DrawText(TextFormat("Points: %i", score.points), 1100, 20, 50, BLUE);
 //Enemy Animation-----------------------------------------------------------------------------------
         enemy.eAnimation();
         //Enemy Texture Drawn
         enemy.drawEnemy();
 //Scoring-------------------------------------------------------------------------------------------
+        score.UpdateScore();
+        score.TextScore();
         //TEST PURPOSES
         if (IsKeyDown(KEY_F))
         {
             score.fines++;
         }
-
+        /*
         if (IsKeyDown(KEY_F) && score.fines >= 100)
         {
             score.drawLoseScreen();
         }
-
+        */
         if (IsKeyDown(KEY_P))
         {
             score.points++;
         }
-
-        if (IsKeyDown(KEY_P) && score.points >= 500)
+        /*
+        if (IsKeyDown(KEY_P) && score.points >= 100)
         {
             score.drawWinScreen();
         }
+        */
 //---------------------------------------------------------------------------------------------------------------
         if (score.points >= 100)
         {
