@@ -215,9 +215,9 @@ int main()
         {
             //Texture2D winscrteen = LoadTexture("assets/winImage.png");
             //DrawTextureEx(winscrteen, (Vector2){ 0 }, 0.0f, 0.79f, WHITE);
-            score.drawWinScreen();
+            score.drawLoseScreen();
             titleScreen.framesCounter++;//Count Frames
-            if (titleScreen.framesCounter > 120)
+            if (titleScreen.framesCounter == 120)
             {
                 //titleScreen.setupTitleScreen();
                 //titleScreen.drawTitleScreen();
@@ -229,34 +229,32 @@ int main()
         {
             //Texture2D winscrteen = LoadTexture("assets/winImage.png");
             //DrawTextureEx(winscrteen, (Vector2){ 0 }, 0.0f, 0.79f, WHITE);
-            score.drawLoseScreen();
+            score.drawWinScreen();
             titleScreen.framesCounter++;//Count Frames
-            if (titleScreen.framesCounter > 120)
+            if (titleScreen.framesCounter == 120)
             {
                 //titleScreen.setupTitleScreen();
                 //titleScreen.drawTitleScreen();
                 menu.gameClose();
             }
         }
-//--------------------------------------------------------------
-        /*
+//-------------------------------------------------------------- 
         if (collision)
         {
             DrawText("SPEEDING FINE!", GetScreenWidth()/2 - MeasureText("+1 FINE!", 20)/2, screenHeight/2 - 10, 20, RED);
-            DrawRectangleRec(boxCollision, LIME);
-            score.fines ++; 
-            score.fines = true;        
+            DrawRectangleRec(boxCollision, GREEN);
+            score.fines +100; 
+            //score.fines = true;        
         }
+        /*
         if (score.fines >= 100)
         {
             score.drawLoseScreen();
-            
             titleScreen.framesCounter++;
             if (titleScreen.framesCounter > 120)
             {
                 menu.gameClose();
-            }
-            
+            }     
         }
         */
 //menu------------------------------------------------------------------------------------------------------
