@@ -2,7 +2,6 @@
 
 class Enemy
 {
-
 public:
 //Speeding Fine -> Setup
     Vector2 ePosition;
@@ -15,7 +14,7 @@ public:
     float eSpeed;
     int eSize;
     bool eActive;
-    float eScrolling = 0.0f;
+    float eScrolling = 1.0f;
 //Points -> Setup
     Vector2 ptsPosition;
     Texture2D ptsImage;
@@ -27,7 +26,7 @@ public:
     float ptsSpeed;
     int ptsSize;
     bool ptsActive;
-    float ptsScrolling = 0.0f;
+    float ptsScrolling = 1.0f;
 //Speeding Fine Animation -> Setup
     int eFrame;
     float eRunningTime;
@@ -43,5 +42,5 @@ public:
     void eAnimation();
     void unloadEnemyTexture();
     void drawEnemy();
-    void addScore();
+    //void addScore();
 };

@@ -20,7 +20,6 @@ void Enemy::eMovement()
     {
         ptsPosX -= ptsScrolling;
     }
-
 }
 
 void Enemy::eAnimation()

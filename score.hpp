@@ -34,16 +34,3 @@ class Score
     void drawWinScreen();
     void drawLoseScreen();
 };
-
-//Enemy Animation
-    int eFrame;
-    float eRunningTime;
-    float eUpdateTime;
-    float eDeltaTime;
-
-    //void playerSetup();
-    void eMovement();
-    void eAnimation();
-    void unloadEnemyTexture();
-    void drawEnemy();
-    void addScore();

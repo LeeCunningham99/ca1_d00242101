@@ -114,7 +114,7 @@ int main()
     enemy.ptsHeight = 250;
     enemy.ptsPosX = 220;
     enemy.ptsImage = LoadTexture("./assets/sspoints.png"); //Points Image
-    enemy.ptsPosition = {800.f, 620.0f};
+    enemy.ptsPosition = {500.f, 500.0f};
     enemy.ptsSource = {0.f, 0.f, enemy.ptsWidth / 3.0f, enemy.ptsHeight}; //Source of Player's Rectangle
     enemy.ptsSpeed = 1.0f;
     enemy.ptsActive = true;
