@@ -88,8 +88,10 @@ int main()
     score.points = 0;
     score.fines = 0;
     //score.fines1 = false;
-    bool collision = false;
-    Rectangle boxCollision = {0};
+    bool fCollision = false;
+    Rectangle boxCollisionFine = {0};
+    bool pCollision = false;
+    Rectangle boxCollisionPoints = {10};
     score.winImage = LoadTexture("./assets/winImage.png");
     score.loseImage = LoadTexture("./assets/loseImage.png");
     score.loseSource = {0.f, 0.f, screenWidth, screenHeight};  
@@ -111,10 +113,10 @@ int main()
 //Points Setup
     enemy.ptsWidth = 1100;
     enemy.ptsPosY = 100;
-    enemy.ptsHeight = 250;
+    enemy.ptsHeight = 280;
     enemy.ptsPosX = 220;
     enemy.ptsImage = LoadTexture("./assets/sspoints.png"); //Points Image
-    enemy.ptsPosition = {500.f, 500.0f};
+    enemy.ptsPosition = {500.f, 480.0f};
     enemy.ptsSource = {0.f, 0.f, enemy.ptsWidth / 3.0f, enemy.ptsHeight}; //Source of Player's Rectangle
     enemy.ptsSpeed = 1.0f;
     enemy.ptsActive = true;
@@ -180,9 +182,11 @@ int main()
             player.powerUpSpeed = true;
         }
 //Scoring--------------------------------------------------------------------------------------------
-        collision = CheckCollisionRecs(player.source, enemy.eSource);
-        if (collision) boxCollision = GetCollisionRec(player.source, enemy.eSource);
+        fCollision = CheckCollisionRecs(player.source, enemy.eSource);
+        if (fCollision) boxCollisionFine = GetCollisionRec(player.source, enemy.eSource);
         
+        pCollision = CheckCollisionRecs(player.source, enemy.ptsSource);
+        if (pCollision) boxCollisionPoints = GetCollisionRec(player.source, enemy.ptsSource);
 
         
 //DRAWING BEGINS ----------------------------------------------------------------------------------
@@ -259,12 +263,12 @@ int main()
             }
         }
 //-------------------------------------------------------------- 
-        if (collision)
+        if (fCollision)
         {
             DrawText("SPEEDING FINE!", GetScreenWidth()/2 - MeasureText("+1 FINE!", 20)/2, screenHeight/2 - 10, 20, RED);
-            DrawRectangleRec(boxCollision, GREEN);
+            DrawRectangleRec(boxCollisionFine, RED);
             score.fines ++; 
-            //score.fines = true;        
+            score.fines = true;        
         }
         /*
         if (score.fines >= 100)
@@ -277,6 +281,13 @@ int main()
             }     
         }
         */
+       if (pCollision)
+        {
+            DrawText("SPEEDING FINE!", GetScreenWidth()/2 - MeasureText("+1 FINE!", 20)/2, screenHeight/2 - 10, 20, RED);
+            DrawRectangleRec(boxCollisionPoints, GREEN);
+            score.points ++; 
+            score.points = true;        
+        }
 //menu------------------------------------------------------------------------------------------------------
         menu.menuExit();
         menu.gameClose();
