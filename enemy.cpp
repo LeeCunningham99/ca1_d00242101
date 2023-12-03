@@ -13,12 +13,12 @@ void Enemy::eMovement()
 //Speeding Fine's Movement
     if (eActive == true)
     {
-        ePosX -= eScrolling;
+        ePosition.x -= eSpeed;
     }
 //Points Movement
     if (ptsActive == true)
     {
-        ptsPosX -= ptsScrolling;
+        ptsPosition.x -= ptsSpeed;
     }
 }
 

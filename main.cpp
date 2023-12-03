@@ -1,16 +1,3 @@
-/*******************************************************************************************
-*
-*   raylib [textures] example - Background scrolling
-*
-*   Example originally created with raylib 2.0, last time updated with raylib 2.5
-*
-*   Example licensed under an unmodified zlib/libpng license, which is an OSI-certified,
-*   BSD-like license that allows static linking with closed source software
-*
-*   Copyright (c) 2019-2023 Ramon Santamaria (@raysan5)
-*
-********************************************************************************************/
-//NOTE: Used base class of scrolling background (from Raylib's website) to start project.
 #include "raylib.h"
 #include "raymath.h"
 #include <stdlib.h>
@@ -148,6 +135,8 @@ int main()
     Timer gameTimer = { 0 };
     float gameLife = 10.0f;
 //Background------------------------------------------------------------------------------------------
+//REFERENCE:
+// https://www.raylib.com/examples.html -> 'Background Scrolling & Parallax' Example, won't let me link it.
     Texture2D background = LoadTexture("assets/Background.png"); //Background Image
     float scrollingBack = 0.0f;
     //float scrollingMid = 0.0f;
@@ -182,13 +171,13 @@ int main()
             player.powerUpSpeed = true;
         }
 //Scoring--------------------------------------------------------------------------------------------
+//REFERENCE:
+// https://www.raylib.com/examples.html -> 'Collision Area' Example, won't let me link it.
         fCollision = CheckCollisionRecs(player.source, enemy.eSource);
         if (fCollision) boxCollisionFine = GetCollisionRec(player.source, enemy.eSource);
         
         pCollision = CheckCollisionRecs(player.source, enemy.ptsSource);
-        if (pCollision) boxCollisionPoints = GetCollisionRec(player.source, enemy.ptsSource);
-
-        
+        if (pCollision) boxCollisionPoints = GetCollisionRec(player.source, enemy.ptsSource);      
 //DRAWING BEGINS ----------------------------------------------------------------------------------
         BeginDrawing();
         ClearBackground(BLACK);
@@ -283,7 +272,7 @@ int main()
         */
        if (pCollision)
         {
-            DrawText("SPEEDING FINE!", GetScreenWidth()/2 - MeasureText("+1 FINE!", 20)/2, screenHeight/2 - 10, 20, RED);
+            DrawText("YOU COLLECTED A BOTTLE!", GetScreenWidth()/2 - MeasureText("+1 FINE!", 20)/2, screenHeight/2 - 10, 20, GREEN);
             DrawRectangleRec(boxCollisionPoints, GREEN);
             score.points ++; 
             score.points = true;        

@@ -11,7 +11,7 @@ public:
     float eHeight;
     int ePosY;
     int ePosX;
-    float eSpeed;
+    int eSpeed;
     int eSize;
     bool eActive;
     float eScrolling = 1.0f;
@@ -23,7 +23,7 @@ public:
     float ptsHeight;
     int ptsPosY;
     int ptsPosX;
-    float ptsSpeed;
+    int ptsSpeed;
     int ptsSize;
     bool ptsActive;
     float ptsScrolling = 1.0f;
