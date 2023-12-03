@@ -93,9 +93,9 @@ int main()
     enemy.eHeight = 250;
     enemy.ePosX = 220;
     enemy.eImage = LoadTexture("./assets/ssenemy.png"); //Speeding Fine Image
-    enemy.ePosition = {1200.f, 220.0f};
+    enemy.ePosition = {1800.f, 220.0f};
     enemy.eSource = {0.f, 0.f, enemy.eWidth / 3.0f, enemy.eHeight}; //Source of Player's Rectangle
-    enemy.eSpeed = 1.0f;
+    enemy.eSpeed = 1.4f;
     enemy.eActive = true;
 //Points Setup
     enemy.ptsWidth = 1100;
@@ -103,9 +103,9 @@ int main()
     enemy.ptsHeight = 280;
     enemy.ptsPosX = 220;
     enemy.ptsImage = LoadTexture("./assets/sspoints.png"); //Points Image
-    enemy.ptsPosition = {500.f, 480.0f};
+    enemy.ptsPosition = {1500.f, 480.0f};
     enemy.ptsSource = {0.f, 0.f, enemy.ptsWidth / 3.0f, enemy.ptsHeight}; //Source of Player's Rectangle
-    enemy.ptsSpeed = 1.0f;
+    enemy.ptsSpeed = 1.2f;
     enemy.ptsActive = true;
 //Enemy Animation------------------------------------------------------------------------------------
 //Speeding Fine Animation Setup
@@ -124,10 +124,17 @@ int main()
 //Audio-----------------------------------------------------------------------------------------------
 //REFERENCE
 // https://www.raylib.com/examples/audio/loader.html?name=audio_music_stream
+// Background Theme: https://www.youtube.com/watch?v=R6ZHn2XEbGk
+// Win Sound: https://freesound.org/people/Unlistenable/sounds/391539/
+// Lose Sound: https://freesound.org/people/Jofae/sounds/364929/
     InitAudioDevice(); //Initializes The Audio Devices
-    Music music = LoadMusicStream("assets/Theme.mp3"); //Loads .mp3 file
-    music.looping = true;
-    PlayMusicStream(music);
+    Music theme = LoadMusicStream("assets/Theme.mp3"); //Loads .mp3 file
+    theme.looping = true;
+    PlayMusicStream(theme);
+    Music winTheme = LoadMusicStream("assets/Music/winSound.wav");
+    winTheme.looping = false;
+    Music loseTheme = LoadMusicStream("assets/Music/loseSound.mp3");
+    loseTheme.looping = false;
     //float pitch = 1.0f;
     //float timePlayed = 0.0f;
     //bool pause = false;
@@ -147,7 +154,7 @@ int main()
         titleScreen.setupTitleScreen(); //Sets up Title Screen
         player.deltaTime = GetFrameTime();
         player.movementController();
-        UpdateMusicStream(music);
+        UpdateMusicStream(theme);
         enemy.eDeltaTime = GetFrameTime();
         enemy.ptsDeltaTime = GetFrameTime();
         enemy.eMovement();
@@ -229,6 +236,8 @@ int main()
             //Texture2D winscrteen = LoadTexture("assets/winImage.png");
             //DrawTextureEx(winscrteen, (Vector2){ 0 }, 0.0f, 0.79f, WHITE);
             score.drawLoseScreen();
+            PlayMusicStream(loseTheme);
+            UpdateMusicStream(loseTheme);
             titleScreen.framesCounter++;//Count Frames
             if (titleScreen.framesCounter == 120)
             {
@@ -243,6 +252,8 @@ int main()
             //Texture2D winscrteen = LoadTexture("assets/winImage.png");
             //DrawTextureEx(winscrteen, (Vector2){ 0 }, 0.0f, 0.79f, WHITE);
             score.drawWinScreen();
+            PlayMusicStream(winTheme);
+            UpdateMusicStream(winTheme);
             titleScreen.framesCounter++;//Count Frames
             if (titleScreen.framesCounter == 120)
             {
@@ -288,7 +299,9 @@ int main()
     UnloadTexture(background);  // Unload background texture
     player.unloadTexture();
     enemy.unloadEnemyTexture();
-    UnloadMusicStream(music);
+    UnloadMusicStream(theme);
+    UnloadMusicStream(winTheme);
+    UnloadMusicStream(loseTheme);
     titleScreen.unloadTitleTexture();
     score.UnloadScoreTextures();   
     CloseWindow();      
