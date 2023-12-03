@@ -20,7 +20,7 @@
 #include "titleScreen.hpp"
 #include "enemy.hpp"
 #include "score.hpp"
-#define numEnemies 2
+#define numEnemies 1
 using namespace std;
 //Timer------------------------------------------------------------------------------------------------
 //REFERENCE
