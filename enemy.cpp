@@ -10,15 +10,22 @@ void Enemy::eMovement()
     */
     //eScrolling -= 0.7f;
     //if (eScrolling <= -eImage.width*0) eScrolling = 0;
+//Speeding Fine's Movement
     if (eActive == true)
     {
         ePosX -= eScrolling;
+    }
+//Points Movement
+    if (ptsActive == true)
+    {
+        ptsPosX -= ptsScrolling;
     }
 
 }
 
 void Enemy::eAnimation()
 {
+//Speeding Fine Animation
     eRunningTime += eDeltaTime;
             if (eRunningTime >= eUpdateTime)
             {
@@ -30,15 +37,29 @@ void Enemy::eAnimation()
                     eFrame = 0;
                 }
             }
+//Points Animation
+    ptsRunningTime += ptsDeltaTime;
+            if (ptsRunningTime >= ptsUpdateTime)
+            {
+                ptsRunningTime = 0.f;
+                ptsSource.x = (float) ptsFrame * ptsSource.width;
+                ptsFrame++;
+                if (ptsFrame > 50)
+                {
+                    ptsFrame = 0;
+                }
+            }
 }
 
 void Enemy::drawEnemy()
 {
     //eScrolling -= 0.7f;
     DrawTextureRec(eImage, eSource, ePosition, WHITE);
+    DrawTextureRec(ptsImage, ptsSource, ptsPosition, WHITE);
 }
 
 void Enemy::unloadEnemyTexture()
 {
-    UnloadTexture(eImage); // Unload enemy's spritesheet texture
+    UnloadTexture(eImage); // Unload Speeding Fine's spritesheet texture
+    UnloadTexture(ptsImage); // Unload Points's spritesheet texture
 }

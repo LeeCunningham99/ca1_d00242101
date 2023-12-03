@@ -98,19 +98,35 @@ int main()
     score.winPosition = {0.f, 0.f};
 //Enemy Setup----------------------------------------------------------------------------------------
     Enemy enemy; //Creating A Player using Player Class.
+//Speeding Fine Setup
     enemy.eWidth = 1100;
     enemy.ePosY = 100;
     enemy.eHeight = 250;
     enemy.ePosX = 220;
-    enemy.eImage = LoadTexture("./assets/ssenemy.png"); //Player Image
+    enemy.eImage = LoadTexture("./assets/ssenemy.png"); //Speeding Fine Image
     enemy.ePosition = {1200.f, 220.0f};
-    enemy.eSource = {0.f, 0.f, player.pWidth / 3.0f, player.pHeight}; //Source of Player's Rectangle
+    enemy.eSource = {0.f, 0.f, enemy.eWidth / 3.0f, enemy.eHeight}; //Source of Player's Rectangle
     enemy.eSpeed = 1.0f;
     enemy.eActive = true;
+//Points Setup
+    enemy.ptsWidth = 1100;
+    enemy.ptsPosY = 100;
+    enemy.ptsHeight = 250;
+    enemy.ptsPosX = 220;
+    enemy.ptsImage = LoadTexture("./assets/sspoints.png"); //Points Image
+    enemy.ptsPosition = {800.f, 620.0f};
+    enemy.ptsSource = {0.f, 0.f, enemy.ptsWidth / 3.0f, enemy.ptsHeight}; //Source of Player's Rectangle
+    enemy.ptsSpeed = 1.0f;
+    enemy.ptsActive = true;
 //Enemy Animation------------------------------------------------------------------------------------
+//Speeding Fine Animation Setup
     enemy.eFrame = 0;
     enemy.eRunningTime={};
     enemy.eUpdateTime={1.f/10.f};
+//Points Animation Setup
+    enemy.ptsFrame = 0;
+    enemy.ptsRunningTime={};
+    enemy.ptsUpdateTime={1.f/10.f};
 //Menu Setup------------------------------------------------------------------------------------------
     Menu menu;
     menu.exitWindowRequested = false;
@@ -122,7 +138,7 @@ int main()
     InitAudioDevice(); //Initializes The Audio Devices
     Music music = LoadMusicStream("assets/Theme.mp3"); //Loads .mp3 file
     music.looping = true;
-    //PlayMusicStream(music);
+    PlayMusicStream(music);
     //float pitch = 1.0f;
     //float timePlayed = 0.0f;
     //bool pause = false;
@@ -142,6 +158,7 @@ int main()
         player.movementController();
         UpdateMusicStream(music);
         enemy.eDeltaTime = GetFrameTime();
+        enemy.ptsDeltaTime = GetFrameTime();
         enemy.eMovement();
         //Update background scrolling
         scrollingBack -= 1.0f;
@@ -246,7 +263,7 @@ int main()
         {
             DrawText("SPEEDING FINE!", GetScreenWidth()/2 - MeasureText("+1 FINE!", 20)/2, screenHeight/2 - 10, 20, RED);
             DrawRectangleRec(boxCollision, GREEN);
-            score.fines +100; 
+            score.fines ++; 
             //score.fines = true;        
         }
         /*
